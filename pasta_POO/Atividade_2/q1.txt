@@ -1,0 +1,6 @@
+(1). Qual a diferença entre objetos e classes? Exemplifique.
+Resposta: A classe é a planta ou modelo a ser seguido para que um projeto seja construído, o
+objeto é algo que pode ser manipulado sendo a instância da classe 
+
+Exemplo: 
+A classe seria a planta de uma casa e a sua estrutura seria o objeto
