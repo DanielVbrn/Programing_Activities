@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Odonto</title>
+    <style type="text/css">
+        h1{
+            color: white;
+            text-align: center;
+            font-size: 40px;
+            
+        }
+        h2{
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-size: 25;
+        }
+        body{
+            background-color: black;
+        }
+        div{
+            color: aqua;
+            text-align: center;
+            font-size: 20px;
+        }
+        button{
+            background-color: rgb(0, 255, 34);
+            color: rgb(255, 255, 255); 
+        }
+        
+    
+    </style>
+</head>
+
+<body>
+    <h1> <b>Bom dia, em que posso ajudá-lo?</b> </h1>
+    <h2>Siga abaixo os atendimentos disponíveis em nossa clínica:</h2>
+    <div>
+        <!-- <h1>Exame sanguíneo.</h1> -->
+        <p> 
+           <button type="menu">
+               <br>&gt;  <b>exame de sangue, com hemograma completo;</b> 
+               <br>&gt;  <b>exames de urina;</b>  
+   
+               <br>&gt;  <b>exame de fezes;</b> 
+               
+               <br>&gt;  <b>eletrocardiograma;</b>  
+               
+               <br>&gt;  <b>ecocardiograma;</b> 
+               
+               <br>&gt;  <b>ultrassom das mamas e intravaginal.</b>  
+            </button> 
+        </p>
+        <br> <img src="ATendimento_Clinica-2.jpg" alt="Acima é uma imagem da sistemática do nosso atendimento.">
+    </div>
+
+
+    
+    <div class="input">
+        <label>Nome</label>
+        <input required type="text"/>
+        <button type='submit' id='validate' colo>Enviar</button>
+        <span class="error"></span>
+    </div>
+    
+    <div class="input">
+        <label>email</label>
+        <input required type="email">
+        <button type='submit' id='validate'>Enviar</button>
+        <span class="error"></span>
+    </div>  
+    
+    
+    <div id="rodape">
+        <br>
+        <br>
+        <span id="year"></span> 
+        <script>
+            document.getElementById("year").innerHTML = new Date().getFullYear();
+        </script>
+    </div>
+</body>
+<!-- <script src=Atendimento.js></script> -->
+</html>

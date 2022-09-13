@@ -1,6 +1,0 @@
-(2).De forma breve, conceitue atributos e métodos. Pesquise e exemplifique um
-exemplo de objeto que possua atributos e métodos (notação livre).
-
-Resposta: Os atributos definem a estrutura de uma classe sendo conhecidos como variáveis,
-já o método seria uma tarefa executada por um objeto ao receber uma mensagem.
-exemplo: o atributo seria o seu raio e o pi de uma esfera e o volume da esfera seria o método.
