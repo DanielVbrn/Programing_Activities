@@ -1,0 +1,13 @@
+@startuml active
+    class Circulo {
+        -number raio
+        +Integer calcularArea()
+        +Integer calcularPerimetro()
+        
+    }
+    class Situacao_financeira {
+        -number Valor_creditos
+        -number Valor_debitos
+        +Integer saldo()
+    }
+@enduml

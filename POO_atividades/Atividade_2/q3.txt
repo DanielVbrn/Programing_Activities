@@ -1,0 +1,15 @@
+(3).A abstração visa focar no que é importante para um sistema. Você concorda que
+um atributo de uma pessoa pode ser importante ou não dependendo do contexto
+do sistema. Enumere na tabela abaixo contextos/sistemas distintos em que os
+atributos abaixo seriam relevantes:
+
+Atributo Sistema em que é
+importante
+
+Peso: doação de sangue no Hemopi
+Tipo de CNH: delivery
+Tipo Sanguíneo: doação de sangue no Hemopi
+Habilidade destra: Escolhinha de Futsal
+Percentual de gordura: competição de fisioculturismo
+Saldo em conta: pagar IR(Imposto de Renda)
+Etinia: cotas em universidades públicas 
