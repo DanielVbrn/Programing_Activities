@@ -1,0 +1,8 @@
+5) Pesquise e, se encontrar, um exemplo onde o tipo any seria benéfico.
+Resposta: 
+    No exemplo a seguir "foo" é declarado mas seu tipo é alterado na medida em que seu valor sofre alteração,
+    e a sua origem seria qualquer valor.
+    
+    var foo = 42;    // foo é um Number agora
+    foo     = "bar"; // foo é um String agora
+    foo     = true;  // foo é um Boolean agora

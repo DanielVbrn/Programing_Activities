@@ -1,0 +1,9 @@
+3) Pesquise um exemplo na internet em que a tipagem dinâmica pode ser
+problemático.
+
+Resposta:
+TypeError.prototype.name
+Error name. Inherited from Error.
+
+Por padrão, as instâncias Error recebem o nome "Error". A propriedade name, além da propriedade message, é usada pelo 
+método Error.prototype.toString() para criar uma representação de string do erro.

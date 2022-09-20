@@ -1,3 +1,7 @@
-1) Enumere os 3 tipos mais comuns de tratamento de erros e exemplifique com
-códigos seus ou pesquisados na internet.
-
+1) Qual a diferença entre tipagem dinâmica e tipagem estática?
+Tipagem dinâmica:  não exige a determinação do tipo de dados que irá se utilizar 
+na execução do programa pois na depuração são capazes de escolher ou alterar o tipo de
+dados.
+Resposta:
+    Tipagem estática: na tiapagem estática necessita-se saber com qual tipo de variável se está trabalhando
+    durante a depuração do programa, onde a variável não pode ser alterada no decorrer do processo.

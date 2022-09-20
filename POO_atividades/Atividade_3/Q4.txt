@@ -1,0 +1,11 @@
+4) Pesquise e exemplifique com um exemplo porque dizemos que a linguagem C,
+mesmo tendo tipagem estática, possui tipagem fraca.
+
+Resposta: tipo fraco permite alguma liberdade para melhorias de velocidade e permite lidar com a memória em um nível baixo. 
+Portanto, não há problema em usá-lo quando você sabe o que está fazendo, para tarefas em que o consumo de memória e a 
+velocidade são importantes.
+ex:
+int add_numbers(int a, int b) {
+    int result = a + b;
+    return result;
+}
