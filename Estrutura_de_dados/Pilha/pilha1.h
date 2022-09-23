@@ -3,88 +3,56 @@
 
 
 
-struct TipoCelula{
-	int item;
-	TipoCelula *prox;
-};
+typedef char  Item;                    // tipo de itens da pilha
+
+typedef struct pilha {					
+	int max;							//capacidade da pilha									
+	int topo;							//posicao topo
+	Item *item;							//itens da pilha			
+} *Pilha;
 
 
-int Pilha_count;
-TipoCelula *top;
-
-
-
-
-void Cronstruct(){
-	top = NULL;
-	Pilha_count=0;
+Pilha pilha(int n){
+	Pilha P = (Pilha)malloc(sizeof(struct pilha));
+	P->max = n;
+	P->topo = -1;
+	P->item = (Item*)malloc(n*sizeof(Item));
+	return P;
 }
 
-void Destruct(){
-	if(top == NULL){
-		return true;
-	}else{
-		return false;
-	}
-}
-
-void pilha_length(){
-	
-}
-
-
-void pilha_empty(){
-	if(top == NULL){
-		return true;
-	}else{
-		return false;
-	}
-}
-
-
-void pilha_push(int valor){
-	TipoCelula *Nova_celula = (TipoCelula*)malloc(sizeof(TipoCelula))
-
-	if(Nova_celula == NULL){
-		return false;
-	}else{
-		Nova_celula->item=valor;
-		Nova_celula->prox=top;
-
-		top = Nova_celula;
-
-		count++;
-		return true;
-	}
-}
-
-
-void pilha_pop(int &valor){
-	TipoCelula *Temp;
-	if(pilha_empty()){
-		return false;
-	}else{
-		valor = top->item;
-		Temp = top;
-		top = top->prox;
-
-		free(Temp);
-		count--;
-		return true
-	}
-}
-
-
-void top_pilha(int &valor){
-	if (pilha_empty())
-	{
-		return false;
-	}else{
-		valor=top->item;
-	}
-	
+int pilhaVazia(Pilha p){
+	if(p->topo == -1) return 1;
+	else return 0;
 }
 
 
 
+int pilhaCheia(Pilha p){
+	if(p->topo == p->max-1) return 1;
+	else return 0;
+}
 
+void empilha(Item x, Pilha p){
+	if(pilhaCheia(p)) {puts("pilha cheia!"); abort();}
+	p->topo++;
+	p->item[p->topo] = x;
+}
+
+
+Item desempilha(Pilha p){
+	if(pilhaVazia(p)) {puts("pilha vazia!"); abort();}
+	Item x = p->item[p->topo];
+	p->topo--;
+	return x;
+}
+
+Item top(Pilha p){
+	if(pilhaVazia(p)){puts("pilha vazia!"); abort();}
+	return p->item[p->topo];
+}
+
+void destroiP(Pilha *Q){
+	free((*Q)->item);
+	free(*Q);
+	*Q = NULL;
+}
