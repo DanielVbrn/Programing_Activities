@@ -43,7 +43,8 @@ class Fila{
 			Item f = inicio -> nome;
 			No *i = inicio;            /* Se refere ao primeiro elemento da fila */
 			inicio = inicio -> prox;
-		
+			free(i);
+			return f;
 		}
 		
 		
