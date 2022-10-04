@@ -1,0 +1,2 @@
+A abordagem da questão 5, pois na 6 questão não da pra notar a mudança no processo mesmo que haja uma
+mudança no código, já na 5 tem-se um retorno

@@ -1,0 +1,13 @@
+/* 
+1)Suponha uma classe Hotel que sirva apenas para guardar a quantidade de
+solicitações de reservas feitas conforme abaixo:
+class Hotel {
+quantReservas : number;
+adicionarReserva() : void {
+quantReservas++;
+}
+} 
+ Resposta: A propriedade 'quantReservas' não tem nenhum inicializador e não está definitivamente 
+atribuída no construtor. */
+
+
