@@ -40,10 +40,12 @@ int fullF(Fila f){
     return (f->total == f->maximo);
 }
 
-void enfileia(Itemf b, Fila f){
+void enfileira(Itemf b, Fila f){
     if(fullF(f)){
         cout << "fila cheia!";
     }
+    f->item[f->final];
+    a
 }
 
 
@@ -52,6 +54,7 @@ void desenfileia(Itemf b, Fila f){
     if(empytF(f)){
         cout << "fila cheia!";
     }
+    
 }
 
 
