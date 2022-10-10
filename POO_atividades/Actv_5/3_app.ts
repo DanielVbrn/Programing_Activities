@@ -1,5 +1,6 @@
-import prompt from "prompt-sync"
-const input = prompt()
+// import prompt from "prompt-sync"
+const input = require("prompt-sync")
+// const input = prompt()
 import { Conta } from "./Conta";
 import { Banco } from "./1_banco";
 

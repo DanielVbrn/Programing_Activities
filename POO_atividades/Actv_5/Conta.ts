@@ -2,14 +2,14 @@
 export class Conta {
     numero: string;
     nomeTitular:string
-    private saldo: number;
+    saldo: number;
     constructor(numero: string, nomeTitular: string, saldo:number= 0){
         this.numero = numero;
         this.nomeTitular = nomeTitular;
         this.saldo = saldo;
     }
 
-    sacar(valor:number){
+    sacar(valor:number):boolean{
         if(this.saldo < valor) {
             return false;
         }else{
