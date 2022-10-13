@@ -1,0 +1,26 @@
+"use strict";
+exports.__esModule = true;
+var _3_privateBanco_1 = require("./3_privateBanco");
+var _4_privateConta_1 = require("./4_privateConta");
+var c1, c2, c3;
+c1 = new _4_privateConta_1.Conta("12", "Marcos", 1000);
+c2 = new _4_privateConta_1.Conta("04", "João", 1000);
+c3 = new _4_privateConta_1.Conta("08", "Danilo", 1000);
+var banco = function () {
+    var banco = new _3_privateBanco_1.Banco();
+    banco.inserir(c1);
+    banco.inserir(c2);
+    banco.inserir(c3);
+    banco.transferir('12', '08', 500);
+    banco.sacar('04', 256);
+    banco.verificContas('04');
+    banco.depositar('08', 5045);
+    console.log(c1.verificarNumero);
+    console.log(c1.verificarNome);
+    console.log(c1.verificarsaldo);
+    console.log(banco.MediaSaldo());
+    console.log(banco.depositoTotal());
+    console.log(banco.qtdContas());
+    console.log(c1);
+};
+banco();

@@ -1,8 +1,7 @@
-
 export class Conta {
-    numero: string;
-    nomeTitular:string
-    saldo: number;
+    private numero: string;
+    private nomeTitular:string
+    private saldo: number;
     constructor(numero: string, nomeTitular: string, saldo:number= 0){
         this.numero = numero;
         this.nomeTitular = nomeTitular;
@@ -18,7 +17,15 @@ export class Conta {
         }
     }
 
-  
+    get verificarNumero(){
+        return this.numero;
+    }
+    get verificarNome(){
+        return this.nomeTitular;
+    }
+    get verificarsaldo(){
+        return this.saldo;
+    }
 
     depositar(valor:number):void{
         this.saldo = this.saldo+valor;
@@ -38,32 +45,3 @@ export class Conta {
  
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class Banco{
-//     contas : Conta = [];
-//     inserir(conta: Conta):void{
-//         this.contas = conta
-//     }
-//     alterar(conta: Conta):void{}
-//     excluir(numero: string):void{}
-
-//     sacar(numero:string, valor:number):void{}
-//     depositar(numero:string, valor:number):void{}
-//     transferir(numeroOrigem:string,numeroDestino:string, valor:number):void{}
-
-// }

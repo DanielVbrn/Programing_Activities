@@ -1,20 +1,20 @@
-import { Conta } from "./Conta";
+import { Conta } from "./4_privateConta";
 
 export class Banco{
-    contas : Array<Conta> = [];
+    private contas : Array<Conta> = [];
     constructor (contas: Array<Conta> = []){
         this.contas = contas;
     }
-    inserir(conta: Conta):void{
-        if(this.verificContas(conta.numero) == 0){
+    public inserir(conta: Conta):void{
+        if(this.verificContas(conta.verificarNumero) == 0){
             this.contas.push(conta);
         }
     }
 
-    verificContas(num:String):number{
+    public verificContas(num:String):number{
         let a: number = 0;      
         for (let i:number = 1; i <= this.contas.length; i++) {
-            if(this.contas[i].numero == num){
+            if(this.contas[i].verificarNumero == num){
                 a = i;
                 break
             }    
@@ -22,10 +22,10 @@ export class Banco{
         return a;
     }
 
-    consultarSaldo(num:String): Conta{
+    private consultarSaldo(num:String): Conta{
         let contaP!: Conta;
         for (const i of this.contas) {
-            if(i.numero == num){
+            if(i.verificarNumero == num){
                 contaP = i;
                 break
             }
@@ -33,21 +33,21 @@ export class Banco{
         return contaP;
     }
 
-     alterar(conta: Conta):void{
-        let o = this.verificContas(conta.numero)
+    public alterar(conta: Conta):void{
+        let o = this.verificContas(conta.verificarNumero)
         if (o != 0) {
             this.contas[o] = conta;
         }
     }
 
 
-     excluir(numero: String): void {
+    public excluir(numero: String): void {
         let indice: number = this.verificContas(numero);
 
         this.contas.splice(indice, 1);
     }
 
-     sacar(numeroCredito:string, valor:number){
+    public sacar(numeroCredito:string, valor:number){
         let verifica:Conta = this.consultarSaldo(numeroCredito);
         if(verifica != null){
             verifica.sacar(valor);
@@ -55,25 +55,25 @@ export class Banco{
 
     }
 
-     depositar(numero:string, valor:number):void{
+    public depositar(numero:string, valor:number):void{
         let conta:Conta = this.consultarSaldo(numero);
         if(conta != null){
             conta.depositar(valor)
         }
     }
 
-     transferir(numeroCredito:string,numeroDebito:string, valor:number):void{
+    public transferir(numeroCredito:string,numeroDebito:string, valor:number):void{
         let a:Conta = this.consultarSaldo(numeroDebito);
         let b:Conta = this.consultarSaldo(numeroCredito);
         
         a.transferencia(b,valor);
     }
 
-    qtdContas(): number{
+    public qtdContas(): number{
         return this.contas.length
     }
 
-    depositoTotal():number{
+    public depositoTotal():number{
         let a:number = 0;
         if(this.qtdContas() != 0){
             let saldo:number[] = this.contas.map((c) => c.consultarSaldo())
@@ -82,12 +82,9 @@ export class Banco{
         return a;
     }
 
-    MediaSaldo(): number{
+    public MediaSaldo(): number{
         let media:number = this.depositoTotal()/this.qtdContas()
         return media;
     }
 
 }
-
-
-
