@@ -4,23 +4,15 @@
 using namespace std;
 
 
-int igual(Lista a, Lista b){
-    if (a != NULL && b != NULL){
-        while (a->prox != NULL){
-            while (b->prox != NULL){
-               if ( a->item != b->item){
-                    return 0;
-               }
-               a = a->prox;
-               b = b->prox;
-            }
-            return 1;
-            
-        }
+
+bool igual(Lista a, Lista b){
+    if (a != NULL && b != NULL)
+        if ( a->item == b->item) return igual(a->prox,b->prox);
+        else return false;
+
+        if (a == NULL && b == NULL) return true;
+        else return false;
         
-        
-    }
-    
     
 }
 
