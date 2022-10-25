@@ -1,9 +1,9 @@
 // import prompt from "prompt-sync"
 const input = require('prompt-sync')({sigint: true});
 // const input = prompt()
-import { Conta } from "./Conta";
-import { Banco } from "./1_banco";
-import {Poupanca} from "../Actv_7/4_renderJuros"
+import { Conta } from "../Actv_6/4_privateConta";
+import { Banco } from "../Actv_6/3_privateBanco";
+import {Poupanca} from "./4_renderJuros"
 
     let banco: Banco = new Banco();
     let opcao: String = '';
@@ -51,9 +51,10 @@ import {Poupanca} from "../Actv_7/4_renderJuros"
     function cadastrar(): void {
         console.log("\nCadastrar conta\n");
         let numero: string = input('Insira o número da conta:');
-        let nome: string = input('Insira seu nome:');
+        let saldo: number = input('Insira seu saldo:');
+        let nomeTitular: string = input('Insira o nome do Titular:');
         let conta: Conta ;
-        conta = new Conta(numero, nome);
+        conta = new Conta(numero, nomeTitular,saldo);
         
         banco.inserir(conta);
     }
@@ -62,10 +63,10 @@ import {Poupanca} from "../Actv_7/4_renderJuros"
     function consultar(): void {
         console.log("\nConsultar conta\n");
         let numero: string = input('Insira o número da conta: ');
-        let conta: Conta = banco.consultarSaldo(numero);
+        let conta: Conta = banco.consultSaldo;
     
         if(conta != undefined) {
-            console.log(`\nNome do titular: ${conta.nomeTitular}, numero: ${conta.numero}\n`);
+            console.log(`\nNome do titular: ${conta.verificarNome}, numero: ${conta.verificarNumero}\n`);
         } 
     }
     function sacar():void  {
@@ -117,11 +118,15 @@ import {Poupanca} from "../Actv_7/4_renderJuros"
     }
 
     function RenderJuros():void{
+        let c1:Poupanca;
+        
+        c1= new Poupanca(10,"12", 1000, "Daniel");
+        banco.inserir(c1);
+        banco.renderJuros("12");
         console.log("\nRender juros da conta\n")
-        let valorJuros:number = input("Insira o valor do juros: ");
-        let numConta:number = input("Insira o número da conta: ");
-        banco
-    }
+        console.log(c1.consultarSaldo());
+
+    }RenderJuros()
 
 
     

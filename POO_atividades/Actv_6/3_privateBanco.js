@@ -33,6 +33,13 @@ var Banco = /** @class */ (function () {
         }
         return contaP;
     };
+    Object.defineProperty(Banco.prototype, "consultSaldo", {
+        get: function () {
+            return this.consultarSaldo();
+        },
+        enumerable: false,
+        configurable: true
+    });
     Banco.prototype.alterar = function (conta) {
         var o = this.verificContas(conta.verificarNumero);
         if (o != 0) {
@@ -74,6 +81,14 @@ var Banco = /** @class */ (function () {
     Banco.prototype.MediaSaldo = function () {
         var media = this.depositoTotal() / this.qtdContas();
         return media;
+    };
+    Banco.prototype.renderJuros = function (numero) {
+        var i = this.verificContas(numero);
+        if (i != 0) {
+            if (this.contas[i] instanceof Banco) {
+                this.contas[i].renderJuros();
+            }
+        }
     };
     return Banco;
 }());

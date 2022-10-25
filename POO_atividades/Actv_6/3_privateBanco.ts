@@ -1,4 +1,5 @@
 import { Conta } from "./4_privateConta";
+import { Poupanca } from "../Actv_7/4_renderJuros";
 
 export class Banco{
     private contas : Array<Conta> = [];
@@ -12,11 +13,11 @@ export class Banco{
     }
 
     public verificContas(num:String):number{
-        let a: number = 0;      
+        let a: number = 0;    
         for (let i:number = 1; i <= this.contas.length; i++) {
             if(this.contas[i].verificarNumero == num){
                 a = i;
-                break
+                break;
             }    
         }
         return a;
@@ -31,6 +32,11 @@ export class Banco{
             }
         }
         return contaP;
+    }
+
+    get consultSaldo():Conta{
+        
+        return this.consultarSaldo(num)
     }
 
     public alterar(conta: Conta):void{
@@ -85,6 +91,16 @@ export class Banco{
     public MediaSaldo(): number{
         let media:number = this.depositoTotal()/this.qtdContas()
         return media;
+    }
+    renderJuros(numero:string){
+        let i = this.verificContas(numero);
+        if(i != 0){
+            if (this.contas[i] instanceof Banco) {
+                (<Poupanca>this.contas[i]).renderJuros()
+                
+            }
+        }
+        
     }
 
 }
