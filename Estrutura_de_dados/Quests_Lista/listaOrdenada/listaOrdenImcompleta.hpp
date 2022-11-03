@@ -96,33 +96,43 @@ class Lista{
 			}		
 		};
 		
-		void removerFinal(){			
-			while (fim->prox != NULL){
-				if (fim->prox == NULL){
-					free(fim->mat);
-				}
-				inicio = inicio->prox;
-				ant = inicio;
-			}	
+		int removerFinal(){			
+			No *ultimo = fim;
+			fim = fim->ant;
+			free(ultimo);
+			return ultimo->mat;
+			
 	
 		};
 		
 		int removerInicio(){
-			Lista l = Lista();
-			while (inicio->ant != NULL){
-				fim = fim->prox;
-				fim = ant;
-			}
-			inicio = ant;
-			free(ant);
+			No *primeiro = inicio;
+			inicio = inicio->prox;
+			free(primeiro);
+			return primeiro->mat;
 		};
 
 
 		int remover(int m){
-			
-    	};
-
-		
+			No *elemento ;
+			if (inicio->mat == m){
+				removerInicio();
+			}else if(fim->mat == m){
+				removerFinal();
+			}else{
+				
+				for (elemento = inicio->prox; elemento->mat != m; elemento = elemento->prox){
+					if (elemento->mat > m  || elemento == NULL){
+						return 0;
+					}
+					
+				}
+				elemento->ant->prox = elemento->prox;
+				elemento->prox->ant = elemento->ant;
+				free(elemento);
+    		};
+			return 1;
+		}		
 };
 // main(){
 // 	Lista *l = new Lista();
