@@ -1,9 +1,11 @@
 #include <iostream>
 #include <stdio.h>
+#include <string.h>
 #include "./ordenacoes.hpp"
 
 main(){
-    int vetor[5] = {8, 4, 3, 9, 10} ;
-    insertion_sort(vetor,5);
-    mostrarInsertion(vetor);
+    char vetor[7] = {'D', 'A', 'N', 'I', 'E', 'L'} ;
+    insertion_sort_Char(vetor,6);
+    mostrarInsertion(vetor, 6);
 }
+
