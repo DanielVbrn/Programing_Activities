@@ -25,7 +25,7 @@ export class Banco{
 
     private consultarSaldo(num:String): Conta{
         let contaP!: Conta;
-        for (const i of this.contas) {
+        for (let i of this.contas) {
             if(i.verificarNumero == num){
                 contaP = i;
                 break
@@ -34,9 +34,8 @@ export class Banco{
         return contaP;
     }
 
-    get consultSaldo():Conta{
-        
-        return this.consultarSaldo(num)
+    set consultSaldo(num:string){
+        this.consultarSaldo(num)
     }
 
     public alterar(conta: Conta):void{

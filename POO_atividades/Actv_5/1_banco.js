@@ -8,14 +8,14 @@ var Banco = /** @class */ (function () {
         this.contas = contas;
     }
     Banco.prototype.inserir = function (conta) {
-        if (this.verificContas(conta.verificarNumero) == 0) {
+        if (this.verificContas(conta.consultarNumero) == 0) {
             this.contas.push(conta);
         }
     };
     Banco.prototype.verificContas = function (num) {
         var a = 0;
         for (var i = 1; i <= this.contas.length; i++) {
-            if (this.contas[i].verificarNumero == num) {
+            if (this.contas[i].consultarNumero == num) {
                 a = i;
                 break;
             }
@@ -26,22 +26,15 @@ var Banco = /** @class */ (function () {
         var contaP;
         for (var _i = 0, _a = this.contas; _i < _a.length; _i++) {
             var i = _a[_i];
-            if (i.verificarNumero == num) {
+            if (i.consultarNumero == num) {
                 contaP = i;
                 break;
             }
         }
         return contaP;
     };
-    Object.defineProperty(Banco.prototype, "consultSaldo", {
-        get: function () {
-            return this.consultarSaldo(num);
-        },
-        enumerable: false,
-        configurable: true
-    });
     Banco.prototype.alterar = function (conta) {
-        var o = this.verificContas(conta.verificarNumero);
+        var o = this.verificContas(conta.consultarNumero);
         if (o != 0) {
             this.contas[o] = conta;
         }
@@ -65,6 +58,9 @@ var Banco = /** @class */ (function () {
     Banco.prototype.transferir = function (numeroCredito, numeroDebito, valor) {
         var a = this.consultarSaldo(numeroDebito);
         var b = this.consultarSaldo(numeroCredito);
+        if (a.consultarSaldo < valor) {
+            console.log("Saldo insuficiente para a transferência!");
+        }
         a.transferencia(b, valor);
     };
     Banco.prototype.qtdContas = function () {
@@ -73,7 +69,7 @@ var Banco = /** @class */ (function () {
     Banco.prototype.depositoTotal = function () {
         var a = 0;
         if (this.qtdContas() != 0) {
-            var saldo = this.contas.map(function (c) { return c.consultarSaldo(); });
+            var saldo = this.contas.map(function (c) { return c.consultarSaldo; });
             a = saldo.reduce(function (anterior, valoratual) { return anterior += valoratual; });
         }
         return a;
@@ -81,14 +77,6 @@ var Banco = /** @class */ (function () {
     Banco.prototype.MediaSaldo = function () {
         var media = this.depositoTotal() / this.qtdContas();
         return media;
-    };
-    Banco.prototype.renderJuros = function (numero) {
-        var i = this.verificContas(numero);
-        if (i != 0) {
-            if (this.contas[i] instanceof Banco) {
-                this.contas[i].renderJuros();
-            }
-        }
     };
     return Banco;
 }());

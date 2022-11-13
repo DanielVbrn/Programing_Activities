@@ -6,7 +6,7 @@ export class Banco{
         this.contas = contas;
     }
     inserir(conta: Conta):void{
-        if(this.verificContas(conta.numero) == 0){
+        if(this.verificContas(conta.consultarNumero) == 0){
             this.contas.push(conta);
         }
     }
@@ -14,7 +14,7 @@ export class Banco{
     verificContas(num:String):number{
         let a: number = 0;      
         for (let i:number = 1; i <= this.contas.length; i++) {
-            if(this.contas[i].numero == num){
+            if(this.contas[i].consultarNumero == num){
                 a = i;
                 break
             }    
@@ -25,7 +25,7 @@ export class Banco{
     consultarSaldo(num:String): Conta{
         let contaP!: Conta;
         for (const i of this.contas) {
-            if(i.numero == num){
+            if(i.consultarNumero == num){
                 contaP = i;
                 break
             }
@@ -33,21 +33,21 @@ export class Banco{
         return contaP;
     }
 
-     alterar(conta: Conta):void{
-        let o = this.verificContas(conta.numero)
+    alterar(conta: Conta):void{
+        let o = this.verificContas(conta.consultarNumero)
         if (o != 0) {
             this.contas[o] = conta;
         }
     }
 
 
-     excluir(numero: String): void {
+    excluir(numero: String): void {
         let indice: number = this.verificContas(numero);
 
         this.contas.splice(indice, 1);
     }
 
-     sacar(numeroCredito:string, valor:number){
+    sacar(numeroCredito:string, valor:number){
         let verifica:Conta = this.consultarSaldo(numeroCredito);
         if(verifica != null){
             verifica.sacar(valor);
@@ -55,17 +55,19 @@ export class Banco{
 
     }
 
-     depositar(numero:string, valor:number):void{
+    depositar(numero:string, valor:number):void{
         let conta:Conta = this.consultarSaldo(numero);
         if(conta != null){
             conta.depositar(valor)
         }
     }
 
-     transferir(numeroCredito:string,numeroDebito:string, valor:number):void{
+    public transferir(numeroCredito:string,numeroDebito:string, valor:number):void{
         let a:Conta = this.consultarSaldo(numeroDebito);
         let b:Conta = this.consultarSaldo(numeroCredito);
-        
+        if(a.consultarSaldo < valor){
+            console.log("Saldo insuficiente para a transferência!")
+        }
         a.transferencia(b,valor);
     }
 
@@ -76,7 +78,7 @@ export class Banco{
     depositoTotal():number{
         let a:number = 0;
         if(this.qtdContas() != 0){
-            let saldo:number[] = this.contas.map((c) => c.consultarSaldo())
+            let saldo:number[] = this.contas.map((c) => c.consultarSaldo)
             a = saldo.reduce((anterior, valoratual) => anterior += valoratual);
         }
         return a;

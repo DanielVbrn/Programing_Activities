@@ -1,0 +1,58 @@
+1) Enumere os 3 tipos mais comuns de tratamento de erros e exemplifique com
+códigos seus ou pesquisados na internet.
+
+#Desconsiderar a operação:
+class Conta {
+    constructor(saldo:number){
+        this.saldo = saldo;
+
+    }
+
+    sacar (valor: number): void {
+        if (this.saldo >= valor){
+            this.saldo = this.saldo - valor;
+        }
+    }    
+}
+
+let conta:Conta = new Conta(1000);
+conta.sacar(100000);
+
+
+#Exibir Mensagem de erro:
+
+class Conta {
+    constructor(saldo:number){
+        this.saldo = saldo;
+
+    }
+
+    sacar (valor: number): void {
+        if (this.saldo >= valor){
+            this.saldo = this.saldo - valor;
+        }else{
+            console.log("Saldo insuficiente.");
+        }
+    }    
+}
+let conta:Conta = new Conta(1000);
+conta.sacar(100000);
+
+
+#Retornar um codigo de erro:
+
+class Conta {
+    constructor(saldo:number){
+        this.saldo = saldo;
+
+    }
+
+    sacar (valor: number): void {
+        if (this.saldo >= valor){
+            this.saldo = this.saldo - valor;
+            return true;
+        }else{
+            return false;
+        }
+    }    
+}

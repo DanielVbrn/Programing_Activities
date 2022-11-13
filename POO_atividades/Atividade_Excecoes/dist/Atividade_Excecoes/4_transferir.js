@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const _1_banco_1 = require("../Actv_5/1_banco");
+const Conta_1 = require("../Actv_5/Conta");
+let conta_b = new Conta_1.Conta("12", 800);
+let conta_c = new Conta_1.Conta("4", 1000);
+let a = new _1_banco_1.Banco();
+a.transferir("12", "4", 400);
+console.log(conta_b.consultarSaldo);
+console.log(conta_c.consultarSaldo);

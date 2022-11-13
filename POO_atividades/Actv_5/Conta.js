@@ -1,11 +1,12 @@
 "use strict";
+// import { Banco } from "./1_banco";
 exports.__esModule = true;
 exports.Conta = void 0;
 var Conta = /** @class */ (function () {
-    function Conta(numero, nomeTitular, saldo) {
+    function Conta(numero /* , nomeTitular: string */, saldo) {
         if (saldo === void 0) { saldo = 0; }
         this.numero = numero;
-        this.nomeTitular = nomeTitular;
+        // this.nomeTitular = nomeTitular;
         this.saldo = saldo;
     }
     Conta.prototype.sacar = function (valor) {
@@ -20,9 +21,20 @@ var Conta = /** @class */ (function () {
     Conta.prototype.depositar = function (valor) {
         this.saldo = this.saldo + valor;
     };
-    Conta.prototype.consultarSaldo = function () {
-        return this.saldo;
-    };
+    Object.defineProperty(Conta.prototype, "consultarSaldo", {
+        get: function () {
+            return this.saldo;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Conta.prototype, "consultarNumero", {
+        get: function () {
+            return this.numero;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Conta.prototype.transferencia = function (contaDestinada, valor) {
         this.sacar(valor);
         contaDestinada.depositar(valor);

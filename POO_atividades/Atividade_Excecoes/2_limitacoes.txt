@@ -1,0 +1,13 @@
+2) Explique por que cada um dos 3 métodos acima possui limitações de uso.
+
+Resposta:
+#Desconsiderar a operação:
+Gera uma incerteza do sucesso ou não da operação.
+
+#Exibir Mensagem de erro:
+prende-se a interface de texto sem saber em que resultaria caso fosse
+utilizado interface gráfica.
+
+#Retornar um codigo de erro:
+Necessita-se testar o valor de retorno para saber o que aconteceu,
+além de ter que reservar alguns valores para representar o erro.

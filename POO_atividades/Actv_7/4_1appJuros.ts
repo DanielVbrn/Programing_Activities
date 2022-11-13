@@ -62,11 +62,11 @@ import {Poupanca} from "./4_renderJuros"
 
     function consultar(): void {
         console.log("\nConsultar conta\n");
-        let numero: string = input('Insira o número da conta: ');
-        let conta: Conta = banco.consultSaldo;
+        let numero: Conta = input('Insira o número da conta: ');
+        let conta: string = banco.consultSaldo;
     
         if(conta != undefined) {
-            console.log(`\nNome do titular: ${conta.verificarNome}, numero: ${conta.verificarNumero}\n`);
+            console.log(`\nNome do titular: ${conta}, numero: ${numero.verificarNumero}\n`);
         } 
     }
     function sacar():void  {

@@ -51,9 +51,9 @@ import {Poupanca} from "../Actv_7/4_renderJuros"
     function cadastrar(): void {
         console.log("\nCadastrar conta\n");
         let numero: string = input('Insira o número da conta:');
-        let nome: string = input('Insira seu nome:');
+        let saldo: number = input('Insira seu saldo:');
         let conta: Conta ;
-        conta = new Conta(numero, nome);
+        conta = new Conta(numero, "Marcos", saldo);
         
         banco.inserir(conta);
     }
@@ -65,7 +65,7 @@ import {Poupanca} from "../Actv_7/4_renderJuros"
         let conta: Conta = banco.consultarSaldo(numero);
     
         if(conta != undefined) {
-            console.log(`\nNome do titular: ${conta.nomeTitular}, numero: ${conta.numero}\n`);
+            console.log(`\nNome do titular: ${conta.nomeTitular}, numero: ${conta.consultarNumero}\n`);
         } 
     }
     function sacar():void  {
