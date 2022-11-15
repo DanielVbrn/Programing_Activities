@@ -1,8 +1,8 @@
 // import prompt from "prompt-sync"
 const input = require('prompt-sync')({sigint: true});
 // const input = prompt()
-import { Conta } from "./Conta";
-import { Banco } from "./1_banco";
+import { Conta } from "../ContaBancaria/ContaBank";
+import { Banco } from "../ContaBancaria/Banco";
 import {Poupanca} from "../Actv_7/4_renderJuros"
 
     let banco: Banco = new Banco();

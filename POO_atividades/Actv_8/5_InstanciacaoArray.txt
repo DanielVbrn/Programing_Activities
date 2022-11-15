@@ -1,0 +1,9 @@
+/* 5. Não podemos aplicar o operador new em FiguraGeometrica, mas por que então
+podemos realizar o seguinte código de instanciação: */
+
+// let figuras:FiguraGeometrica[] = new Array();
+
+Resposta: Porque uma classe abstrata não podendo ser implementada, mas as classes concretas que 
+herdam dela podendo ser, pode-se gerar um array de figuras geométricas das classes filhas.
+
+

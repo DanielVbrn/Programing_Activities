@@ -1,0 +1,5 @@
+2. Explique o que é necessário para que a compilação da ClasseConcreta ocorra
+sem erros:
+
+Resposta: É necessário que seja chamado o método abstrato da classe mãe, pois os métodos da classe mãe são obrigatoriamente implementados pela classe filha
+para obedecer a herança.

@@ -11,10 +11,11 @@ let c2:Conta = new Conta("15", "Marcos",1500);
 let banco = ():void =>{
     let banco:Banco = new Banco();
     banco.sacar("10", -1000);
-    banco.sacar("15", -45);
+    banco.sacar("15", 500);
     banco.transferir("10", "15", 300);
     c1.consultarSaldo;
     c2.consultarSaldo;
-
+    // banco.sacar("10", -1000); // ERRO
+    // banco.transferir("10", "15", 300); // ERRO
 }
 banco()

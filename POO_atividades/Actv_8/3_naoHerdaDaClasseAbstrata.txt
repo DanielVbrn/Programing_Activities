@@ -1,0 +1,5 @@
+3. Se uma classe que herda de uma abstrata e não implementa os seus métodos, o
+que ocorre?
+
+Resposta: Dará erro de compilação pois será pedido para que o método da classe mãe seja implementado na
+classe filha pois essa está herdando.

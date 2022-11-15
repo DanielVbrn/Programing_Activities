@@ -1,0 +1,10 @@
+"use strict";
+exports.__esModule = true;
+var Banco_1 = require("../ContaBancaria/Banco");
+var ContaBank_1 = require("../ContaBancaria/ContaBank");
+var conta_a = new ContaBank_1.Conta("10", "Daniel", 1000);
+var conta_b = new ContaBank_1.Conta("20", "Vitor", 1000);
+var conta = new Banco_1.Banco();
+conta.inserir(conta_a);
+conta.inserir(conta_b);
+conta.consultarPorIndice("10");

@@ -1,0 +1,4 @@
+1.Podemos instanciar classes abstratas? Justifique.
+
+Resposta: Não, pois as classes abstratas apenas disponibilizam seus atributos para aquelas outras classes que herdarem dela
+obedecendo uma herança.
