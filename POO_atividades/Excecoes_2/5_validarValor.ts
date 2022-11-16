@@ -1,0 +1,1 @@
+// Método implementado em ContaValidacoes

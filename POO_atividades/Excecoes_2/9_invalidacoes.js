@@ -1,0 +1,14 @@
+"use strict";
+exports.__esModule = true;
+var BancoValidacoes_1 = require("./BancoValidacoes");
+var ContaValidacoes_1 = require("./ContaValidacoes");
+var conta_a = new ContaValidacoes_1.Conta("10", -450);
+var conta_b = new ContaValidacoes_1.Conta("20", -100);
+var conta_c = new ContaValidacoes_1.Conta("20", -50);
+var conta = new BancoValidacoes_1.Banco();
+conta.inserir(conta_a);
+conta.inserir(conta_b);
+conta.inserir(conta_c);
+conta.consultarPorIndice("10");
+conta_a.transferencia(conta_b, 400);
+conta_b.consultarSaldo;

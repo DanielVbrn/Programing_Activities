@@ -1,6 +1,6 @@
 // import { Banco } from "../../ContaBancaria/1_banco";
 
-class AplicacaoError extends Error{
+export class AplicacaoError extends Error{
     constructor(message:string){
         super(message);
     }
@@ -17,10 +17,13 @@ export class ContaInexistenteError extends AplicacaoError{
         super(message);
     }
 }
-
-export class ValorInvalidoError extends AplicacaoError{
+export class ContaExistenteError extends AplicacaoError{
     constructor(message:string){
         super(message);
     }
-    
 }
+
+
+
+
+
