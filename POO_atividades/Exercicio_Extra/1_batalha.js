@@ -21,10 +21,10 @@ var Guerreiros = /** @class */ (function () {
         this.life = 10;
     }
     Guerreiros.prototype.defenderAtaque = function (valorAtaque) {
-        this.life - valorAtaque;
+        this.life -= valorAtaque;
     };
     Guerreiros.prototype.estaEliminado = function () {
-        if (this.life = 0) {
+        if (this.life <= 0) {
             return true;
         }
         else {
@@ -47,7 +47,7 @@ var BasesMilitares = /** @class */ (function () {
         this.percentual_de_danos = 0;
     }
     BasesMilitares.prototype.defenderAtaque = function (valorAtaque) {
-        this.percentual_de_danos + valorAtaque;
+        this.percentual_de_danos += valorAtaque;
     };
     BasesMilitares.prototype.estaEliminado = function () {
         if (this.percentual_de_danos >= 90) {
@@ -57,7 +57,56 @@ var BasesMilitares = /** @class */ (function () {
             return false;
         }
     };
+    Object.defineProperty(BasesMilitares.prototype, "percentualDeDano", {
+        get: function () {
+            return this.percentualDeDano;
+        },
+        enumerable: false,
+        configurable: true
+    });
     return BasesMilitares;
+}());
+var CenarioDeBatalha = /** @class */ (function () {
+    function CenarioDeBatalha() {
+    }
+    CenarioDeBatalha.prototype.avaliar = function (defensivel1, defensivel2) {
+        var indexD1 = 0;
+        var indexD2 = 0;
+        for (var i = 0; i < defensivel1.length; i++) {
+            if (defensivel1 instanceof Guerreiros) {
+                if (defensivel1[i].estaEliminado() == false) {
+                    indexD1 += 3;
+                }
+            }
+            if (defensivel1 instanceof BasesMilitares) {
+                if (defensivel1[i].estaEliminado() == false) {
+                    indexD1 += 5;
+                }
+            }
+        }
+        for (var i = 0; i < defensivel2.length; i++) {
+            if (defensivel1 instanceof BasesMilitares) {
+                if (defensivel2[i].estaEliminado() == false) {
+                    indexD2 += 7;
+                }
+            }
+            if (defensivel1 instanceof BasesMilitares) {
+                if (defensivel1[i].estaEliminado() == false) {
+                    indexD1 += 5;
+                }
+            }
+        }
+        if (indexD1 > indexD2) {
+            console.log("O Exército 1 saiu vencedor!");
+        }
+        else if (indexD1 < indexD2) {
+            console.log("O Exército 2 saiu vencedor!");
+        }
+        else {
+            console.log("Houve um empate!");
+        }
+    };
+    return CenarioDeBatalha;
 }());
 var JaEliminadoException = /** @class */ (function (_super) {
     __extends(JaEliminadoException, _super);
@@ -66,8 +115,26 @@ var JaEliminadoException = /** @class */ (function (_super) {
     }
     return JaEliminadoException;
 }(Error));
-var Warrior = new Guerreiros("12", "Guerreiro habilidoso com mais de mil batalhas", 100);
-var MilitaryBase = new BasesMilitares("10", "Teresina", "Guadalupe");
-Warrior.atacar(MilitaryBase);
-MilitaryBase.defenderAtaque(9);
-console.log(Warrior.estaEliminado());
+var Warrior_1 = new Guerreiros("12", "Guerreiro", 5);
+var Warrior_2 = new Guerreiros("10", "Mago", 4);
+var MilitaryBase = new BasesMilitares("10", 4, 5);
+Warrior_1.atacar(MilitaryBase);
+Warrior_2.atacar(MilitaryBase);
+Warrior_2.atacar(Warrior_1);
+MilitaryBase.defenderAtaque(1);
+var guerra1 = new CenarioDeBatalha();
+var WR_Blue = [];
+var WR_red = [];
+for (var i = 0; i < 8; i++) {
+    WR_Blue.push(Warrior_1);
+    WR_Blue.push(Warrior_1);
+    WR_Blue.push(Warrior_1);
+    WR_red.push(Warrior_2);
+}
+WR_Blue.push(MilitaryBase);
+WR_Blue.push(MilitaryBase);
+WR_red.push(MilitaryBase);
+WR_red.push(MilitaryBase);
+for (var i = 0; i < 10; i++) {
+    console.log(guerra1.avaliar(WR_Blue, WR_red));
+}
