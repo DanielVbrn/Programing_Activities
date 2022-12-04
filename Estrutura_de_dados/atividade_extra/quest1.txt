@@ -1,0 +1,25 @@
+1.Letra A
+2.Letra B
+    a-5
+    b-4
+    c-1
+    d-2
+    e-3
+
+3.C
+V
+F
+V
+V
+F
+
+4.B
+V
+F
+V
+F
+
+5.A
+V
+F
+V
