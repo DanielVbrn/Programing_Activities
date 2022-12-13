@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 exports.__esModule = true;
-exports.AlunoSemNota = exports.NotaJaCadastradaError = exports.HorarioInvalidoError = exports.ValorInvalidoError = exports.CodProfessorError = exports.AplicacaoError = exports.id_userError = exports.ProfessorJaCadastradoErrror = exports.AlunoJaCadastradoError = exports.AlunoNaoEncontradoError = exports.MatriculaError = void 0;
+exports.codProfessorError = exports.AtividadeNaoEncontradaError = exports.AtividadeJaCadastradaError = exports.AlunoSemNota = exports.NotaJaCadastradaError = exports.HorarioInvalidoError = exports.ValorInvalidoError = exports.CodProfessorError = exports.AplicacaoError = exports.id_userError = exports.ProfessorJaCadastradoErrror = exports.AlunoJaCadastradoError = exports.AlunoNaoEncontradoError = exports.MatriculaError = void 0;
 var MatriculaError = /** @class */ (function (_super) {
     __extends(MatriculaError, _super);
     function MatriculaError(mensage) {
@@ -104,3 +104,27 @@ var AlunoSemNota = /** @class */ (function (_super) {
     return AlunoSemNota;
 }(Error));
 exports.AlunoSemNota = AlunoSemNota;
+var AtividadeJaCadastradaError = /** @class */ (function (_super) {
+    __extends(AtividadeJaCadastradaError, _super);
+    function AtividadeJaCadastradaError(mensage) {
+        return _super.call(this, mensage) || this;
+    }
+    return AtividadeJaCadastradaError;
+}(Error));
+exports.AtividadeJaCadastradaError = AtividadeJaCadastradaError;
+var AtividadeNaoEncontradaError = /** @class */ (function (_super) {
+    __extends(AtividadeNaoEncontradaError, _super);
+    function AtividadeNaoEncontradaError(mensage) {
+        return _super.call(this, mensage) || this;
+    }
+    return AtividadeNaoEncontradaError;
+}(Error));
+exports.AtividadeNaoEncontradaError = AtividadeNaoEncontradaError;
+var codProfessorError = /** @class */ (function (_super) {
+    __extends(codProfessorError, _super);
+    function codProfessorError(mensage) {
+        return _super.call(this, mensage) || this;
+    }
+    return codProfessorError;
+}(Error));
+exports.codProfessorError = codProfessorError;

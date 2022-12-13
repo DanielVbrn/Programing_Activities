@@ -63,3 +63,20 @@ export class AlunoSemNota extends Error{
         super(mensage)
     }
 }
+
+export class AtividadeJaCadastradaError extends Error{
+    constructor(mensage:string){
+        super(mensage)
+    }
+}
+
+export class AtividadeNaoEncontradaError extends Error{
+    constructor(mensage:string){
+        super(mensage)
+    }
+}
+export class codProfessorError extends Error{
+    constructor(mensage:string){
+        super(mensage)
+    }
+}

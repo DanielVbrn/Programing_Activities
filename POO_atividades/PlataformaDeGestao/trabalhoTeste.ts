@@ -1,38 +1,57 @@
-import { dir } from "console";
 import { isString } from "@vue/shared";
-import {  AlunoNaoEncontradoError, AlunoJaCadastradoError,ProfessorJaCadastradoErrror, id_userError,ValorInvalidoError,HorarioInvalidoError,CodProfessorError } from "./excecoes";
+import {  AlunoNaoEncontradoError, AlunoJaCadastradoError,ProfessorJaCadastradoErrror, id_userError,ValorInvalidoError,HorarioInvalidoError,AtividadeJaCadastradaError,AtividadeNaoEncontradaError,codProfessorError } from "./excecoes";
+import { IAlunos } from "./IAlunos";
+import { IRepositoriaid_users } from "./IDiretoria";
+
 
 export class User {
     private nome: string;
-    private id_user: string;
-    // public carga_horaria: number;
+    public id_user: string;
+    public carga_horaria_min: number;
+    public atividades:string[] = [];
+    private alunos:Aluno[] = [];
+    private professores: Professor[] = [];
+    private notas:number[] = [];
     
-    constructor(nome: string,  id_user: string, carga_horaria: number ) {
-        this.id_user = id_user;
-        this.nome = nome;
-        // this.carga_horaria = carga_horaria;
+    // constructor(nome: string,  id_user: string) {
+    //     this.id_user = id_user;
+    //     this.nome = nome;
+    //     this.carga_horaria_min = 0;
         
-    }
+    // }
 
-    public get idUser():string{
-        return this.id_user;
-    }
+    // public get idUser():string{
+    //     return this.id_user;
+    // }
     public get nameUser():string{
         return this.nome;
     }  
+    public get Notas():number[]{
+        return this.notas;
+    }  
     
-    TempoDePermanencia(horario_entrada:number,horario_saida:number):void{
+    public set Professores(a:any){
+        a = this.professores;
+    }
+
+    public set Alunos(a:any){
+        a = this.alunos;
+    }
+    TempoDePermanencia(horario_entrada:number,horario_saida:number):number{
         this.validarValor(horario_entrada);
         this.validarValor(horario_saida);
+        this.VerificarHorario(horario_entrada,horario_saida)
         let total = horario_saida - horario_entrada
-        this.carga_horaria = total
+        this.carga_horaria_min = total
+        return total
     }
 
     qttAulasDia(horario_entrada:number,horario_saida:number):void{
         this.validarValor(horario_entrada);
         this.validarValor(horario_saida);
+        this.VerificarHorario(horario_entrada,horario_saida)
         let total = horario_saida - horario_entrada
-        this.carga_horaria = total/60
+        this.carga_horaria_min = total/60
     }
 
 
@@ -47,100 +66,116 @@ export class User {
     private VerificarHorario(horario_entrada:number,horario_saida:number){
         if(horario_entrada>horario_saida){
             throw new HorarioInvalidoError("Horario entrada maior que horario saída")
-                }
+        }
+    }
+    
+}
+
+
+export class Aluno extends User implements IAlunos{  
+    cod_aluno:string  
+    constructor(nome: string, id_user: string,carga_horaria_min:number) {
+        super();
+        carga_horaria_min = 0;
+    } 
+
+    private EhValido(id_user:string):boolean{
+        if (!isString(id_user)){ 
+        throw new id_userError("id_user Invalida: " + id_user);
     }
 
+        return true;
+    }
 
-}
+    verificarNotas(id_aluno: string): number {
+        for (let i = 0; i < this.Alunos.length; i++) {
+            if (this.Alunos[i].id_user == id_aluno) {
+                return this.Alunos[i].notas[i];
+            }
+            
+        }
+        return 0;
+    }
 
+    verificarAtividades():void{
+        for (let i = 0; this.atividades.length; i++) {
+            console.log(this.atividades[i]);
+        }
+    }
 
-
-
-export class Aluno extends User {    
-   /*   public nota: number  ;
-        faltas:number
- */
-   constructor(nome: string, id_user: string,carga_horaria:number) {
-       super(nome, id_user,carga_horaria);
+    public FrequenciadeAulas(qttAulasDiaria:number):number{
+        let minutosTotais = qttAulasDiaria *60;
+        let qttAulasAssistidas = minutosTotais - this.carga_horaria_min;
+        let qttfaltas = qttAulasAssistidas/60;
+        return Math.ceil(qttfaltas);
         
-   } 
-
-   EhValido(id_user:string):boolean{
-       if (!isString(id_user)){ 
-           throw new id_userError("id_user Invalida: " + id_user);
-       }
-
-       return true;
-   }
-
-
-   FrequenciadeAulas(qttAulasDiaria:number):number{
-    let minutosTotais = qttAulasDiaria *60;
-    let qttAulasAssistidas = minutosTotais - this.carga_horaria;
-    let qttfaltas = qttAulasAssistidas/60;
-    return qttfaltas;
-
-   }
+    }
 
 }
 
 
-
-
-interface IAtividade{
-    VizualizarAtividades():any;  
-} 
-
-export class Professor  extends User  /* implements IAtividade */{
-    
-
+export class Professor extends User{
     private cod_prof: string;
     
-    constructor(cod_prof:string,  nome: string, id_user: string, carga_horaria: number){
-        super(nome,id_user,carga_horaria);
+    constructor(cod_prof:string,  nome: string, id_user: string, carga_horaria_min: number){
+        super();
         this.cod_prof = cod_prof;
-       
+        this.Alunos = [];
+        carga_horaria_min = 0;
     }
+
+    inserirNota(id_aluno:string, nota:number[]):void{
+        for (let i = 0; i < this.Alunos.length; i++) {
+            if(this.Alunos[i].id_user = id_aluno){
+
+                this.Alunos[i].notas[i] = nota[i];
+            }
+            
+        }
+    }
+
+    addAtividades(nomeAtividade:string):void {
+        this.atividades.push(nomeAtividade) ;
+    }
+
+
 
     public get codProfessor():string{
         return this.cod_prof;
     } 
 
-       
-    VizualizarAtividades(atividade:[]):any{
-        for (let ativ of atividade){
-            return ativ
-        }
-
-    }
-
-    AulasMinistradas(){
-        return this.carga_horaria/60
-    }
 
     
+
+    AulasMinistradas(){
+        return this.carga_horaria_min/60
+    }
 
 }
 
 
-
-
-interface IRepositoriaid_users{
-    inserir(usuario: User): void;
-    consultar(id_user: String): Aluno
-    alterar(estudante: Aluno): void;
-    excluir(idUser:string, posicao:number): void;
-} 
-
-export class Curso  implements IRepositoriaid_users{
+export class Diretoria  extends User implements IRepositoriaid_users{
     turma: Aluno[] = [];
-    professores: Professor[] = []
-    atividade:string[] = [];
+    // professores: Professor[] = []
     
-    consultar(id_user: string): Aluno {
-        let id_userProcurada!: Aluno;
+
+    inserir(aluno:Aluno): void {
+        try {
+            this.consultar(aluno.id_user);
+            throw new AlunoJaCadastradoError("Aluno já cadastrado!");
+
+        } catch(e:any) {
+            if(e instanceof AlunoJaCadastradoError){
+                throw e;
+            }
+            this.turma.push(aluno);
+        }
+    }
+    
+    consultar(id_user: string): User {
+        let id_userProcurada!: User;
         for (let i of this.turma) {
-            if (i.idUser == id_user) {
+            if (i.id_user == id_user) {
                 id_userProcurada = i;
             }
         }
@@ -152,20 +187,6 @@ export class Curso  implements IRepositoriaid_users{
     }
 
 
-
-    inserir(aluno:Aluno): void {
-        try {
-            this.consultar(aluno.idUser);
-            throw new AlunoJaCadastradoError("Aluno já cadastrado!");
-
-        } catch(e:any) {
-            if(e instanceof AlunoJaCadastradoError){
-                throw e;
-            }
-            this.turma.push(aluno);
-        }
-    }
-
     addProfessor(prof:Professor):void{
         try {
             this.consultar(prof.codProfessor);
@@ -175,7 +196,7 @@ export class Curso  implements IRepositoriaid_users{
             if(e instanceof ProfessorJaCadastradoErrror){
                 throw e;
             }
-            this.professores.push(prof);
+            this.Professores.push(prof);
         }
         
         
@@ -185,7 +206,7 @@ export class Curso  implements IRepositoriaid_users{
     consultarPorIndice(id_user: string): number {
         let indiceIdProcurado: number = -1;
         for(let i = 0; i < this.turma.length; i++){
-            if(this.turma[i].idUser == id_user){
+            if(this.turma[i].id_user == id_user){
                 indiceIdProcurado = i;
             }
         }
@@ -195,8 +216,18 @@ export class Curso  implements IRepositoriaid_users{
         return indiceIdProcurado;
     }
 
+    EhValido(cod_prof:string):boolean{
+        for(let i = 0; i<this.professores.length; i++){
+            if(cod_prof == this.professores[i].codProfessor ){
+                return true
+             
+            }
+        } 
+        throw new codProfessorError("Professor não encontrado")
+        
+    }
     alterar(estudante: Aluno): void {
-        let indice: number = this.consultarPorIndice(estudante.idUser);
+        let indice: number = this.consultarPorIndice(estudante.id_user);
         this.turma[indice] = estudante;
     } 
 
@@ -210,70 +241,46 @@ export class Curso  implements IRepositoriaid_users{
         this.turma.pop();
     }
     
-    addAtividades(nomeAtividade:string, codProfessor:string):void { 
-        if(this.EhValido(codProfessor)){    
-        this.atividade.push(`Nome atividade:${nomeAtividade}`)
-        }else{
-            throw new codProfessorError("Codigo invalido!")
-        } 
-    }
    
 
-    EhValido(cod_prof:string):boolean{
-        for(let i = 0; i<this.professores.length; i++){
-            if(cod_prof == this.professores[i].codProfessor ){
-                return true
-             
-            }
-        } 
-        throw new CodProfessorError("Professor não encontrado")
-        
-    }
     
-    /* APARENTEMENTE Curso ESTÁ OK! */
+    
 }
 
 
-// let usuario1:User = new User("Daniel", "004", "danielvbrn", "12345");
-// let usuario2:User = new User("Marcos", "044", "marcosVnc", "1234567");
 
-// let Aluno1:Aluno = new Aluno("A","João", "044","joao@", "12367");
-// let Aluno2:Aluno = new Aluno("A", "Miguel", "002","aurelio@","12321");
-
-
-// let direcao:Diretor = new Diretor("Aurelio", "009","aurelio@","12321");
-// direcao.inserir(Aluno1);
-// direcao.inserir(Aluno2);
-// console.log(direcao.alterar(Aluno1));
-
-/* class Turma extends Aluno {
-    alunos: Aluno[] = []
+// addAtividades(nomeAtividade:string, codProfessor:string):void { 
+//     if(this.EhValido(codProfessor)){    
+//     this.atividade.push(`Nome atividade:${nomeAtividade}`)
+//     }else{
+//         throw new codProfessorError("Codigo invalido!")
+//     } 
+// }
 
 
-    
-    EhValido(id_user:number): number {
-        let id_userProcurada!: number
-        for (let i = 0; i < this.alunos.length; i++) {
-            if (this.alunos[i].id_user == id_user) {
-                id_userProcurada = this.id_user
-            }
-        }
-        if (!id_userProcurada) {
-            throw new id_userNaoEncontradaError("id_user não encontrada!")
-        }
-        
-        return id_userProcurada
-    }
-    
-    
-    consultarNota(id_user): void {
-        if (this.EhValido(id_user)) {
-            console.log(this.nota)
+// let usuario1:User = new User("Daniel", "004",200);
+// let usuario2:User = new User("Marcos", "044",360);
 
-        } else {
-            throw new id_userError("id_user invalida!")
-        }
+let Aluno1:Aluno = new Aluno("Jorge", "044", 200);
+let Aluno2:Aluno = new Aluno("Davi", "002", 300);
+let Aluno3:Aluno = new Aluno("Marcos", "039", 400);
 
-    }
+let Prof1:Professor = new Professor('001',"Marcos Aurelio", "2022001",300);
+let Prof2:Professor = new Professor('002',"Vinicius Junior", "2022002",400);
 
-} */
+
+
+let user:User = new User()
+
+let direcao:Diretoria = new Diretoria();
+direcao.inserir(Aluno1);
+direcao.inserir(Aluno2);
+direcao.inserir(Aluno3);
+direcao.addProfessor(Prof1);
+direcao.addProfessor(Prof2);
+
+
+Prof1.inserirNota('044',[10, 8, 9]);
+
+console.log(user.Alunos);
+

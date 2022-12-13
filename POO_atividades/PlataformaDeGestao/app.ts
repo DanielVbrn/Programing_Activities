@@ -1,9 +1,9 @@
 import prompt from "prompt-sync"
-import { Aluno, Professor, Diretor } from "./trabalhoMain"
+import { Aluno, Professor, Diretoria } from "./trabalhoTeste"
 import  * as exe  from  "./excecoes"
 
 let input = prompt();
-let t:Diretor = new Diretor(); 
+let t:Diretoria = new Diretoria(); 
 let p:Professor
 let a:Aluno
 
@@ -44,15 +44,19 @@ function CategoriaProf():void{
     console.log("1-ADICIONAR ATIVIDADE \n 2-ALTERAR NOTA \n 3-VIZUALIZAR ATIVIDADES");
     let op: string = input("Digite sua opção: ").toLowerCase();
     if(op == "1"){
-       let nomeAtiv = input("Digite o nome da atividade a ser inserida: ");
-        p.addAtividades(nomeAtiv);
+        let nomeAtiv = input("Digite o nome da atividade a ser inserida: ");
+        let cod_professor:string = input("Insira o código do professor: ")
+        p.addAtividades(nomeAtiv,cod_professor);
     
     }if(op == "2"){
         let nota = Number(input("Digite a atual nota do aluno: "))
-        let nome = input("Digite o nome do aluno: ")
-        let id = input("Digite o id do aluno: ")
-        let aluno:Aluno = new Aluno(nome,id)
+        let nome = input("Digite o nome do aluno: ");
+        let id = input("Digite o id do aluno: ");
+        let aluno:Aluno = new Aluno(nome,id,200);
         let novaNota = Number(input("Digite a nova nota do aluno:"))
+        
+
+
        /*  p.alterarNotaAluno(aluno, novaNota) <-PRECISA REVER*/
         
     }if(op == "3"){
@@ -86,12 +90,13 @@ function CategoriaDiretor():void{
         let nota = Number(input("Digite a nota do aluno: "))
         let nome = input("Digite o nome do aluno: ")
         let id = input("Digite o id do aluno: ")
-        let novo_aluno:Aluno = new Aluno(nome,id)
+        let carga_horaria:number = Number(input("Digite a carga horária do aluno: "))
+        let novo_aluno:Aluno = new Aluno(nome,id,carga_horaria);
         t.inserir(novo_aluno)
     }if(o == 3){
         let id = input("Digite o id do aluno: ")
         t.excluir(id)
-    }if(o==4){
+    }if(o == 4){
         let nome = input("Digite o nome do professor: ")
         let id = input("Digite o id do professor: ")
         let cod_prof = input("Digite o codigo do professor")
@@ -102,5 +107,5 @@ function CategoriaDiretor():void{
 }
 
 function Exibir(id_user:string):void{
-    console.log(` Id: ${t.consultar(id_user).idUser}\n Nome: ${t.consultar(id_user).nameUser }\n Nota:${t.consultar(id_user).nota} `)
+    console.log(` Id: ${t.consultar(id_user).idUser}\n Nome: ${t.consultar(id_user).nameUser }\n Nota:${t.consultar(id_user)} `)
 }

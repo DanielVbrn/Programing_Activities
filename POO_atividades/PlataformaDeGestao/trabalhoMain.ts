@@ -12,7 +12,7 @@ export class User {
     }
 
     public get idUser():string{
-        return this.idUser;
+        return this.id_user;
     }
     public get nameUser():string{
         return this.nome;
@@ -47,8 +47,9 @@ interface IAtividade{
 export class Professor  extends User  implements IAtividade,IRepositoriode_Notas{
     /* CONSULTAR NOTA TEM Q MUDAR SEUS ATRIBUTOS,TENDO EM VISTA QUE NO "APP" PARA ACESSAR ESSE METODO EU PRECISARIA DE UM ALUNO DO TIPO ALUNO E PARA ISSO EU DEVERIA PERGUNTAR QUAL A NOTA DELE(NÃO TENHO CERTEZA SE SERÁ ASSIM MESMO Q FAZ) 
     
+    
     ACHO QUE SERIA UMA BOA DEIXAR DE UTILIZAR O TIPO "ALUNO" E BUSCAR FORMAS DE USAR APENAS O "TIPO" USER OU USAR OS ATRIBUTOS QUE PROF POSSUI*/
-    alunos: Aluno[] = [];
+    alunos:Aluno[] = [];
     atividade:string[] = [];
     
     private cod_prof: string;
@@ -64,26 +65,32 @@ export class Professor  extends User  implements IAtividade,IRepositoriode_Notas
         return this.cod_prof;
     } 
     
-    inserirNota(idAluno: string, nota: number): void {
+    inserirNota(idAluno: string): void {
+        let aluno:Aluno;
         for (let i = 0; i < this.alunos.length; i++) {
-            if(this.alunos[i].idUser == idAluno){
-                if(this.alunos[i].notas == null){
-                    this.alunos[i].notas[i] = nota
-                } else {
-                    throw new NotaJaCadastradaError("Aluno já possui nota");
-                }   
-            }else{
+            if(this.alunos[i].idUser != idAluno){
                 throw new AlunoNaoEncontradoError("Aluno não consta no sistema...");
+            }else{
+                for(let j = 0; j < this.alunos[i].notas.length; i++){
+                        if(this.alunos[i].notas[j] == null){
+                            this.alunos[i].notas.push(this.alunos[i].notas[j]);
+                        } else {
+                            throw new NotaJaCadastradaError("Aluno já possui nota");
+                        }   
+                    }
+                    
+                }
+                
+                
             }
-        }
     }
 
 
     alterarNota(id_Aluno:string, newNota:number): void{};
     excluirNota(id_Aluno): void{};
-
-
-
+    
+    
+    
     /* consultarNota(aluno:Aluno):number{
         return aluno.nota
     } */
@@ -99,19 +106,19 @@ export class Professor  extends User  implements IAtividade,IRepositoriode_Notas
     }
     
     /* SERIA BOM CRIAR UM METODO VIZUALIZAR ATIVIDADES */
-
+    
     
 }
 
 
 export class Aluno extends User {    
     notas: number[] = [];
-   /*  public turma: string; */
+    /*  public turma: string; */
     constructor(nome: string, id_user: string) {
         super(nome, id_user);
-
+        
     } 
-
+    
     EhValido(id_user:string):boolean{
         if (!isString(id_user)){ 
             throw new id_userError("id_user Invalida: " + id_user);
@@ -227,13 +234,9 @@ direcao.inserir(Aluno2);
 direcao.inserir(Aluno3);
 direcao.addProfessor(Prof1);
 direcao.addProfessor(Prof2);
-console.table(direcao.turma);
 
 Prof1.inserirNota('044',10);
-Prof1.inserirNota('002',8);
-Prof1.inserirNota('039',7);
-Prof2.inserirNota('044',8);
-Prof2.inserirNota('002',9);
-Prof2.inserirNota('039',7);
 
+
+console.table(direcao.consultar('044'));
 console.table(direcao.professores);
