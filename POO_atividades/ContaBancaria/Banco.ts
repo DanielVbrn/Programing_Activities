@@ -30,12 +30,12 @@ export class Banco{
 
     private consultar(num:String): Conta{
         let contaP!: Conta;
-        for (let i of this.contas) {
+        for (let i of this.contas){
             if(i.consultarNumero != num){
                 throw new ContaInexistenteError("Conta não existe!")
             } else if(i.consultarNumero == num){
                 contaP = i;
-                break
+                break;
             }
         }
         return contaP;
