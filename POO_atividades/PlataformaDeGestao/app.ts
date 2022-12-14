@@ -1,18 +1,23 @@
 import prompt from "prompt-sync"
-import { Aluno, Professor, Diretoria } from "./trabalhoTeste"
+import { Aluno, Professor, Diretoria, User } from "./trabalhoTeste"
 import  * as exe  from  "./excecoes"
+import * as fs from "fs"
+const input = fs.readFileSync("BasedeDadosDoSistema.txt", "utf-8")
 
-let input = prompt();
+let i = 0
+
+
 let t:Diretoria = new Diretoria(); 
 let p:Professor
 let a:Aluno
 
 let opcao: String = '';
- 
+
 do{
     try{
         console.log('\n Bem vindo \n\n Digite sua categoria:');
         console.log('1-PROFESSOR\n 2-ALUNO\n 3-DIRETOR ');
+        
         opcao = input("Opção: ");
         switch(opcao)
         {
@@ -37,19 +42,22 @@ do{
 } while (opcao != "0");
 
 
-function CategoriaProf():void{
-     
+function CategoriaProf():void{ 
     
     console.log("Digite a opção desejada:");
-    console.log("1-ADICIONAR ATIVIDADE \n 2-ALTERAR NOTA \n 3-VIZUALIZAR ATIVIDADES");
+    let menu:string = ""
+    menu += "1-ADICIONAR ATIVIDADE";
+    menu += "1-ADICIONAR NOTA";
+    menu += "2-ALTERAR NOTA";
+    menu += "3-VIZUALIZAR ATIVIDADES";
     let op: string = input("Digite sua opção: ").toLowerCase();
     if(op == "1"){
         let nomeAtiv = input("Digite o nome da atividade a ser inserida: ");
-        let cod_professor:string = input("Insira o código do professor: ")
-        p.addAtividades(nomeAtiv,cod_professor);
+        p.addAtividades(nomeAtiv);
     
     }if(op == "2"){
         let nota = Number(input("Digite a atual nota do aluno: "))
+        let direcao:Diretoria = new Diretoria();
         let nome = input("Digite o nome do aluno: ");
         let id = input("Digite o id do aluno: ");
         let aluno:Aluno = new Aluno(nome,id,200);
@@ -80,7 +88,7 @@ function CategoriaAluno():void{
 
 function CategoriaDiretor():void{
     console.log("Digite a opção desejada:")
-    console.log("1-CONSULTAR \n 2- INSERIR ALUNO \n 3-EXCLUIR ");
+    console.log("1-CONSULTAR \n 2- INSERIR ALUNO \n 3-EXCLUIR \n 4 - PROFESSOR");
     let o:number = Number(input("Digite sua opção:"));
     if(o == 1){
         let id = input("Digite o id do usuario que vc gostaria de consultar: ")
@@ -99,9 +107,9 @@ function CategoriaDiretor():void{
     }if(o == 4){
         let nome = input("Digite o nome do professor: ")
         let id = input("Digite o id do professor: ")
-        let cod_prof = input("Digite o codigo do professor")
-        let cod_mat = input("Digite o codigo da materia:")
-        let novo_prof:Professor = new Professor(cod_prof,cod_mat,nome,id)
+        let cod_prof:string = input("Digite o codigo do professor")
+        let carga_horaria:number = Number(input("Insira a carga horaria do professor:"));
+        let novo_prof:Professor = new Professor(cod_prof,nome,id,carga_horaria);
         t.addProfessor(novo_prof)
 }
 }

@@ -6,11 +6,9 @@ import { IRepositoriaid_users } from "./IDiretoria";
 
 export class User {
     private nome: string;
-    public id_user: string;
+    private id_user: string;
     public carga_horaria_min: number;
     public atividades:string[] = [];
-    private alunos:Aluno[] = [];
-    private professores: Professor[] = [];
     private notas:number[] = [];
     
     // constructor(nome: string,  id_user: string) {
@@ -25,23 +23,25 @@ export class User {
     // }
     public get nameUser():string{
         return this.nome;
+    } 
+
+    public get idUser():string{
+        return this.id_user;
     }  
+
+
     public get Notas():number[]{
         return this.notas;
     }  
     
-    public set Professores(a:any){
-        a = this.professores;
-    }
-
-    public set Alunos(a:any){
-        a = this.alunos;
-    }
+    
+    
+    
     TempoDePermanencia(horario_entrada:number,horario_saida:number):number{
         this.validarValor(horario_entrada);
         this.validarValor(horario_saida);
-        this.VerificarHorario(horario_entrada,horario_saida)
-        let total = horario_saida - horario_entrada
+        this.VerificarHorario(horario_entrada,horario_saida);
+        let total = horario_saida - horario_entrada;
         this.carga_horaria_min = total
         return total
     }
@@ -51,9 +51,9 @@ export class User {
         this.validarValor(horario_saida);
         this.VerificarHorario(horario_entrada,horario_saida)
         let total = horario_saida - horario_entrada
-        this.carga_horaria_min = total/60
+        this.carga_horaria_min = total/60;
     }
-
+    
 
     private validarValor(valor: number): boolean {
         if (isNaN(valor) || valor <= 0) {
@@ -72,8 +72,9 @@ export class User {
 }
 
 
-export class Aluno extends User implements IAlunos{  
-    cod_aluno:string  
+export class Aluno extends User implements IAlunos,INotas{  
+    cod_aluno:string
+
     constructor(nome: string, id_user: string,carga_horaria_min:number) {
         super();
         carga_horaria_min = 0;
@@ -82,22 +83,35 @@ export class Aluno extends User implements IAlunos{
     private EhValido(id_user:string):boolean{
         if (!isString(id_user)){ 
         throw new id_userError("id_user Invalida: " + id_user);
-    }
-
+        }
         return true;
     }
 
-    verificarNotas(id_aluno: string): number {
-        for (let i = 0; i < this.Alunos.length; i++) {
-            if (this.Alunos[i].id_user == id_aluno) {
-                return this.Alunos[i].notas[i];
+    // verificarNotas(direcao:Diretoria): number {
+    //     for (let i = 0; i < direcao.Turma.length; i++) {
+    //         if (direcao.Turma[i].idUser == this.cod_aluno){
+    //             return direcao.Turma[i].Notas[i];
+    //         } 
+    //     }
+    //     return 0;
+    // }
+
+    consultarnotas(direcao:Diretoria,idAluno:string): number[]{
+        for (let i = 0; i < direcao.Turma.length; i++) {
+            if(direcao.Turma[i].cod_aluno == idAluno){
+                return direcao.Turma[i].Notas;
+            }else{
+                throw new AlunoNaoEncontradoError('Aluno não encontrado');
             }
-            
         }
-        return 0;
+        return [0];
     }
 
     verificarAtividades():void{
+
+    }
+
+    co():void{
         for (let i = 0; this.atividades.length; i++) {
             console.log(this.atividades[i]);
         }
@@ -111,26 +125,31 @@ export class Aluno extends User implements IAlunos{
         
     }
 
+    verificarturma(direcao:Diretoria): Aluno[] {
+        return direcao.Turma;
+    }
+
+}
+
+interface INotas{
+    consultarnotas(direcao:Diretoria,idAluno:string): number[]
 }
 
 
-export class Professor extends User{
+export class Professor extends User implements INotas{
     private cod_prof: string;
     
     constructor(cod_prof:string,  nome: string, id_user: string, carga_horaria_min: number){
         super();
         this.cod_prof = cod_prof;
-        this.Alunos = [];
         carga_horaria_min = 0;
     }
 
-    inserirNota(id_aluno:string, nota:number[]):void{
-        for (let i = 0; i < this.Alunos.length; i++) {
-            if(this.Alunos[i].id_user = id_aluno){
-
-                this.Alunos[i].notas[i] = nota[i];
-            }
-            
+    inserirNota(direcao:Diretoria, id_aluno:string,nota:number[]):void{
+        for (let i = 0; i < direcao.Turma.length; i++) {
+            if(direcao.Turma[i].idUser === id_aluno){
+                direcao.Turma[i].Notas.push(nota[i]);
+            } 
         }
     }
 
@@ -138,30 +157,42 @@ export class Professor extends User{
         this.atividades.push(nomeAtividade) ;
     }
 
-
-
+    
     public get codProfessor():string{
         return this.cod_prof;
     } 
-
-
     
-
-    AulasMinistradas(){
-        return this.carga_horaria_min/60
+    consultarnotas(direcao:Diretoria,idAluno:string): number[]{
+        for (let i = 0; i < direcao.Turma.length; i++) {
+            if(direcao.Turma[i].cod_aluno == idAluno){
+                return direcao.Turma[i].Notas;
+            }else{
+                throw new AlunoNaoEncontradoError('Aluno não encontrado');
+            }
+        }
+        return [0];
     }
+
+    // AulasMinistradas(){
+    //     return this.carga_horaria_min/60
+    // }
 
 }
 
 
 export class Diretoria  extends User implements IRepositoriaid_users{
+    cod_diretoria:string;
     turma: Aluno[] = [];
-    // professores: Professor[] = []
+    professores: Professor[] = [];
     
+    public get Professores(): Professor[]{
+        return this.professores;
+    }
+
 
     inserir(aluno:Aluno): void {
         try {
-            this.consultar(aluno.id_user);
+            this.consultar(aluno.idUser);
             throw new AlunoJaCadastradoError("Aluno já cadastrado!");
 
         } catch(e:any) {
@@ -175,7 +206,7 @@ export class Diretoria  extends User implements IRepositoriaid_users{
     consultar(id_user: string): User {
         let id_userProcurada!: User;
         for (let i of this.turma) {
-            if (i.id_user == id_user) {
+            if (i.idUser === id_user) {
                 id_userProcurada = i;
             }
         }
@@ -199,14 +230,13 @@ export class Diretoria  extends User implements IRepositoriaid_users{
             this.Professores.push(prof);
         }
         
-        
     }
     
     
     consultarPorIndice(id_user: string): number {
         let indiceIdProcurado: number = -1;
         for(let i = 0; i < this.turma.length; i++){
-            if(this.turma[i].id_user == id_user){
+            if(this.turma[i].idUser === id_user){
                 indiceIdProcurado = i;
             }
         }
@@ -216,22 +246,22 @@ export class Diretoria  extends User implements IRepositoriaid_users{
         return indiceIdProcurado;
     }
 
+
     EhValido(cod_prof:string):boolean{
-        for(let i = 0; i<this.professores.length; i++){
-            if(cod_prof == this.professores[i].codProfessor ){
-                return true
-             
+        for(let i = 0; i<this.Professores.length; i++){
+            if(cod_prof === this.Professores[i].codProfessor){
+                return true;
             }
         } 
-        throw new codProfessorError("Professor não encontrado")
+        throw new codProfessorError("Professor não encontrado");
         
     }
+
+
     alterar(estudante: Aluno): void {
-        let indice: number = this.consultarPorIndice(estudante.id_user);
+        let indice: number = this.consultarPorIndice(estudante.idUser);
         this.turma[indice] = estudante;
     } 
-
-    
 
     excluir(id_user: string): void {
         let indice: number = this.consultarPorIndice(id_user);
@@ -240,11 +270,6 @@ export class Diretoria  extends User implements IRepositoriaid_users{
         }
         this.turma.pop();
     }
-    
-   
-
-    
-    
 }
 
 
@@ -270,7 +295,7 @@ let Prof2:Professor = new Professor('002',"Vinicius Junior", "2022002",400);
 
 
 
-let user:User = new User()
+// let user:User = new User()
 
 let direcao:Diretoria = new Diretoria();
 direcao.inserir(Aluno1);
@@ -279,8 +304,8 @@ direcao.inserir(Aluno3);
 direcao.addProfessor(Prof1);
 direcao.addProfessor(Prof2);
 
+Prof1.inserirNota(direcao,'044',[10, 8, 9]);
+Prof1.inserirNota(direcao,'044',[10, 8, 9]);
 
-Prof1.inserirNota('044',[10, 8, 9]);
-
-console.log(user.Alunos);
+console.table(Aluno1.consultarnotas(direcao,'044'));
 

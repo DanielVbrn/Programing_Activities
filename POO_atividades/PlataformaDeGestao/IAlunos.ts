@@ -1,4 +1,7 @@
+import { Diretoria,Aluno } from "./trabalhoTeste";
+
 export interface IAlunos{
     verificarAtividades():void;
-    verificarNotas(idProf:string):number
+    consultarnotas(direcao:Diretoria,idAluno:string): number[];
+    verificarturma(direcao:Diretoria): Aluno[] ;
 }
