@@ -103,17 +103,14 @@ var Aluno = /** @class */ (function (_super) {
     //     return 0;
     // }
     Aluno.prototype.consultarnotas = function (direcao, idAluno) {
-        for (var i = 0; i < direcao.Turma.length; i++) {
-            if (direcao.Turma[i].cod_aluno == idAluno) {
-                return direcao.Turma[i].Notas;
-            }
-            else {
-                throw new excecoes_1.AlunoNaoEncontradoError('Aluno não encontrado');
-            }
+        for (var i = 0; i < direcao.turma.length; i++) {
+            if (direcao.turma[i].cod_aluno == idAluno) {
+                return direcao.turma[i].Notas;
+            } /* else{
+                throw new AlunoNaoEncontradoError('Aluno não encontrado');
+            } */
         }
         return [0];
-    };
-    Aluno.prototype.verificarAtividades = function () {
     };
     Aluno.prototype.co = function () {
         for (var i = 0; this.atividades.length; i++) {
@@ -127,7 +124,7 @@ var Aluno = /** @class */ (function (_super) {
         return Math.ceil(qttfaltas);
     };
     Aluno.prototype.verificarturma = function (direcao) {
-        return direcao.Turma;
+        return direcao.turma;
     };
     return Aluno;
 }(User));
@@ -141,9 +138,9 @@ var Professor = /** @class */ (function (_super) {
         return _this;
     }
     Professor.prototype.inserirNota = function (direcao, id_aluno, nota) {
-        for (var i = 0; i < direcao.Turma.length; i++) {
-            if (direcao.Turma[i].idUser === id_aluno) {
-                direcao.Turma[i].Notas.push(nota[i]);
+        for (var i = 0; i < direcao.turma.length; i++) {
+            if (direcao.turma[i].idUser === id_aluno) {
+                direcao.turma[i].Notas.push(nota[i]);
             }
         }
     };
@@ -158,12 +155,13 @@ var Professor = /** @class */ (function (_super) {
         configurable: true
     });
     Professor.prototype.consultarnotas = function (direcao, idAluno) {
-        for (var i = 0; i < direcao.Turma.length; i++) {
-            if (direcao.Turma[i].cod_aluno == idAluno) {
-                return direcao.Turma[i].Notas;
-            } /* else{
-                throw new AlunoNaoEncontradoError('Aluno não encontrado');
-            } */
+        for (var i = 0; i < direcao.turma.length; i++) {
+            if (direcao.turma[i].cod_aluno == idAluno) {
+                return direcao.turma[i].Notas;
+            }
+            else {
+                throw new excecoes_1.AlunoNaoEncontradoError('Aluno não encontrado');
+            }
         }
         return [0];
     };
@@ -185,13 +183,6 @@ var Diretoria = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
-    Object.defineProperty(Diretoria.prototype, "Turma", {
-        get: function () {
-            return this.turma;
-        },
-        enumerable: false,
-        configurable: true
-    });
     Diretoria.prototype.inserir = function (aluno) {
         try {
             this.consultar(aluno.idUser);
@@ -208,13 +199,13 @@ var Diretoria = /** @class */ (function (_super) {
         var id_userProcurada;
         for (var _i = 0, _a = this.turma; _i < _a.length; _i++) {
             var i = _a[_i];
-            if (i.idUser === id_user) {
+            if (i.cod_aluno === id_user) {
                 id_userProcurada = i;
             }
         }
-        if (!id_userProcurada) {
-            throw new excecoes_1.AlunoNaoEncontradoError("Aluno não encontrado!");
-        }
+        // if (!id_userProcurada) {
+        //    throw new AlunoNaoEncontradoError("Aluno não encontrado!");
+        // }
         return id_userProcurada;
     };
     Diretoria.prototype.addProfessor = function (prof) {
@@ -226,7 +217,7 @@ var Diretoria = /** @class */ (function (_super) {
             if (e instanceof excecoes_1.ProfessorJaCadastradoErrror) {
                 throw e;
             }
-            this.Professores.push(prof);
+            this.professores.push(prof);
         }
     };
     Diretoria.prototype.consultarPorIndice = function (id_user) {

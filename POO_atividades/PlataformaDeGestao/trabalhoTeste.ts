@@ -97,19 +97,16 @@ export class Aluno extends User implements IAlunos,INotas{
     // }
 
     consultarnotas(direcao:Diretoria,idAluno:string): number[]{
-        for (let i = 0; i < direcao.Turma.length; i++) {
-            if(direcao.Turma[i].cod_aluno == idAluno){
-                return direcao.Turma[i].Notas;
-            }else{
+        for (let i = 0; i < direcao.turma.length; i++) {
+            if(direcao.turma[i].cod_aluno == idAluno){
+                return direcao.turma[i].Notas;
+            }/* else{
                 throw new AlunoNaoEncontradoError('Aluno não encontrado');
-            }
+            } */
         }
         return [0];
     }
 
-    verificarAtividades():void{
-
-    }
 
     co():void{
         for (let i = 0; this.atividades.length; i++) {
@@ -126,7 +123,7 @@ export class Aluno extends User implements IAlunos,INotas{
     }
 
     verificarturma(direcao:Diretoria): Aluno[] {
-        return direcao.Turma;
+        return direcao.turma;
     }
 
 }
@@ -146,9 +143,9 @@ export class Professor extends User implements INotas{
     }
 
     inserirNota(direcao:Diretoria, id_aluno:string,nota:number[]):void{
-        for (let i = 0; i < direcao.Turma.length; i++) {
-            if(direcao.Turma[i].idUser === id_aluno){
-                direcao.Turma[i].Notas.push(nota[i]);
+        for (let i = 0; i < direcao.turma.length; i++) {
+            if(direcao.turma[i].idUser === id_aluno){
+                direcao.turma[i].Notas.push(nota[i]);
             } 
         }
     }
@@ -160,12 +157,12 @@ export class Professor extends User implements INotas{
     
     public get codProfessor():string{
         return this.cod_prof;
-    } 
+    }
     
     consultarnotas(direcao:Diretoria,idAluno:string): number[]{
-        for (let i = 0; i < direcao.Turma.length; i++) {
-            if(direcao.Turma[i].cod_aluno == idAluno){
-                return direcao.Turma[i].Notas;
+        for (let i = 0; i < direcao.turma.length; i++) {
+            if(direcao.turma[i].cod_aluno == idAluno){
+                return direcao.turma[i].Notas;
             }else{
                 throw new AlunoNaoEncontradoError('Aluno não encontrado');
             }
@@ -204,15 +201,15 @@ export class Diretoria  extends User implements IRepositoriaid_users{
     }
     
     consultar(id_user: string): User {
-        let id_userProcurada!: User;
+        let id_userProcurada!: Aluno;
         for (let i of this.turma) {
-            if (i.idUser === id_user) {
+            if (i.cod_aluno === id_user) {
                 id_userProcurada = i;
             }
         }
-        if (!id_userProcurada) {
-           throw new AlunoNaoEncontradoError("Aluno não encontrado!");
-        }
+        // if (!id_userProcurada) {
+        //    throw new AlunoNaoEncontradoError("Aluno não encontrado!");
+        // }
         
         return id_userProcurada;
     }
@@ -227,7 +224,7 @@ export class Diretoria  extends User implements IRepositoriaid_users{
             if(e instanceof ProfessorJaCadastradoErrror){
                 throw e;
             }
-            this.Professores.push(prof);
+            this.professores.push(prof);
         }
         
     }
