@@ -1,4 +1,4 @@
-import { VitoriaObtida,EmpateObitido } from "./excessoes";
+import { VitoriaObtida,EmpateObitido,VitoriaJogador1, VitoriaJogador2 } from "./excessoes";
 
 abstract class MatrizDoJogo{
     public casas:Array<Array<string>> = [];
@@ -38,8 +38,11 @@ export class Tabuleiro extends MatrizDoJogo implements StatusDaPartida{
     
     private verificarLinha():void{
         for(let i = 0; i < this.casas.length; i++) {
-            if(this.casas[i][0] === this.casas[i][1] && this.casas[i][1] === this.casas[i][2]){
-                throw new VitoriaObtida("Partida finalizada - linha");
+            if(this.casas[i][0] === this.jogador1.valor && this.casas[i][1] === this.jogador1.valor && this.casas[i][2] === this.jogador1.valor){
+                throw new VitoriaJogador1("Jogador 1 venceu");
+            }
+            if(this.casas[i][0] === this.jogador2.valor && this.casas[i][1] === this.jogador2.valor && this.casas[i][2] === this.jogador2.valor){
+                throw new VitoriaJogador2("Jogador 2 venceu");
             }
         }
     }
@@ -47,21 +50,26 @@ export class Tabuleiro extends MatrizDoJogo implements StatusDaPartida{
     
     private verificarColuna():void{
         for(let j = 0; j < this.casas.length; j++){
-            if(this.casas[0][j] === this.casas[1][j] && this.casas[1][j] === this.casas[2][j]){
-                throw new VitoriaObtida("Partida finalizada - coluna");
+            if(this.casas[0][j] === this.jogador1.valor && this.casas[1][j] === this.jogador1.valor && this.casas[2][j] === this.jogador1.valor){
+                throw new VitoriaJogador1("Jogador 1 venceu.");
+            }
+            if(this.casas[0][j] === this.jogador2.valor && this.casas[1][j] === this.jogador2.valor && this.casas[2][j] === this.jogador2.valor){
+                throw new VitoriaJogador2("Jogador 2 venceu.");
             }
         }
     }
     
     
     private verificarDiagonal(){
-        if(this.casas[0][0] === this.casas[1][1] && this.casas[1][1] === this.casas[2][2]){
-            throw new VitoriaObtida("Partida finalizada - diagonal1");
+        
+        if(this.casas[0][0] === this.jogador1.valor && this.casas[1][1] === this.jogador1.valor && this.casas[2][2] === this.jogador1.valor){
+            throw new VitoriaJogador1("Jogador 1 venceu.");
         }
-        if(this.casas[2][0] === this.casas[1][1] && this.casas[1][1] === this.casas[0][2]){
-            throw new VitoriaObtida("Partida finalizada - diagonal2");   
+        if(this.casas[2][0] === this.jogador2.valor && this.casas[1][1] === this.jogador2.valor && this.casas[0][2] === this.jogador2.valor){
+            throw new VitoriaJogador2("Jogador 2 venceu.");
         }
     }
+       
 
     private verificarEmpate():void{
         for(let i = 0; i < this.casas.length; i++){
@@ -87,7 +95,7 @@ export class Tabuleiro extends MatrizDoJogo implements StatusDaPartida{
                 throw new VitoriaObtida("Jogo encerrado.");
             }
             if(error instanceof EmpateObitido){
-                throw new EmpateObitido("Parrtida encerrada em um empate.");
+                throw new EmpateObitido("Partida encerrada em um empate.");
             }
         }
     }

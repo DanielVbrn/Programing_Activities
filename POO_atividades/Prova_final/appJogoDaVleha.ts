@@ -1,38 +1,51 @@
 const input = require('prompt-sync')({sigint: true});
 import { Jogador, Tabuleiro, } from "./jogo";
-
+import { EmpateObitido, VitoriaJogador1, VitoriaJogador2} from "./excessoes";
 let opcao:number;
 let telaDeRegras:string;
-
-do { 
-    let jogoDavelha = "---------------------------------   # JOGO DA VELHA #   -------------------------------------";
-    jogoDavelha += "\n\n"
-    jogoDavelha += "1 - INICIAR PARTIDA.";
-    jogoDavelha += "\n\n"
-    jogoDavelha += "2 - VISUALIZAR REGRAS DO JOGO";
-    jogoDavelha += "\n\n"
-    jogoDavelha += "0 - FINALIZAR PROGRAMA.";
-    jogoDavelha += "\n\n";
-    jogoDavelha += "-----> (RECOMENDA-SE QUE O USUÁRIO VISUALIZE AS REGRAS DO JOGO ANTES DE INICIAR UMA PARTIDA!) <------";
-    jogoDavelha += "\n\n";
-    console.log(jogoDavelha);
+try {
     
-    opcao = Number(input("Opção: "));
-
+    do { 
+        let jogoDavelha = "---------------------------------   # JOGO DA VELHA #   -------------------------------------";
+        jogoDavelha += "\n\n"
+        jogoDavelha += "1 - INICIAR PARTIDA.";
+        jogoDavelha += "\n\n"
+        jogoDavelha += "2 - VISUALIZAR REGRAS DO JOGO";
+        jogoDavelha += "\n\n"
+        jogoDavelha += "0 - FINALIZAR PROGRAMA.";
+        jogoDavelha += "\n\n";
+        jogoDavelha += "-----> (RECOMENDA-SE QUE O USUÁRIO VISUALIZE AS REGRAS DO JOGO ANTES DE INICIAR UMA PARTIDA!) <------";
+        jogoDavelha += "\n\n";
+        console.log(jogoDavelha);
+        
+        opcao = Number(input("Opção: "));
     
-    switch (opcao) {
-        case 1:
-            partidaJogoDaVelha();
-            break;
-        case 2:
-            verRegrasDojogo();
-            break;
-        case 0:
-            break;
-        default:
-            break;
+        
+        switch (opcao) {
+            case 1:
+                partidaJogoDaVelha();
+                break;
+            case 2:
+                verRegrasDojogo();
+                break;
+            case 0:
+                break;
+            default:
+                break;
+        }
+    } while (opcao !== 0);
+} catch (error:any) {
+    if(error instanceof VitoriaJogador1){
+        console.log("O jogador 1 saiu vencedor.");
     }
-} while (opcao !== 0);
+    if(error instanceof VitoriaJogador2){
+        console.log("O jogador 2 saiu vencedor.");
+    }
+    if(error instanceof EmpateObitido){
+        console.log("O jogador 1 e o jogador 2 empataram.");
+    }
+    
+}
 
 
 function partidaJogoDaVelha(){
@@ -50,7 +63,6 @@ function partidaJogoDaVelha(){
 
      
 }
-partidaJogoDaVelha()
 
 function verRegrasDojogo(){
     let regras:string = "--------------- # Regras do jogo # ----------------"

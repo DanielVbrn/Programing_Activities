@@ -1,86 +1,74 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.Jogador = exports.Tabuleiro = void 0;
-var excessoes_1 = require("./excessoes");
-var MatrizDoJogo = /** @class */ (function () {
-    function MatrizDoJogo() {
+const excessoes_1 = require("./excessoes");
+class MatrizDoJogo {
+    constructor() {
         this.casas = [];
     }
-    return MatrizDoJogo;
-}());
-var Tabuleiro = /** @class */ (function (_super) {
-    __extends(Tabuleiro, _super);
-    function Tabuleiro(jogador1, jogador2) {
-        var _this = _super.call(this) || this;
-        _this.jogador1 = jogador1;
-        _this.jogador2 = jogador2;
-        _this.casas = [
+}
+class Tabuleiro extends MatrizDoJogo {
+    constructor(jogador1, jogador2) {
+        super();
+        this.jogador1 = jogador1;
+        this.jogador2 = jogador2;
+        this.casas = [
             ['0', '0', '0'],
             ['0', '0', '0'],
             ['0', '0', '0'],
         ];
-        return _this;
     }
-    Tabuleiro.prototype.zerarTabuleiro = function () {
-        for (var i = 0; i < this.casas.length; i++) {
-            for (var j = 0; j < this.casas.length; j++) {
+    zerarTabuleiro() {
+        for (let i = 0; i < this.casas.length; i++) {
+            for (let j = 0; j < this.casas.length; j++) {
                 if (this.casas[i][j] !== "0") {
                     this.casas[i][j] = '0';
                 }
             }
         }
-    };
-    Tabuleiro.prototype.exibetabuleiro = function () {
+    }
+    exibetabuleiro() {
         return this.casas;
-    };
-    Tabuleiro.prototype.verificarLinha = function () {
-        for (var i = 0; i < this.casas.length; i++) {
-            if (this.casas[i][0] === this.casas[i][1] && this.casas[i][1] === this.casas[i][2]) {
-                throw new excessoes_1.VitoriaObtida("Partida finalizada - linha");
+    }
+    verificarLinha() {
+        for (let i = 0; i < this.casas.length; i++) {
+            if (this.casas[i][0] === this.jogador1.valor && this.casas[i][1] === this.jogador1.valor && this.casas[i][2] === this.jogador1.valor) {
+                throw new excessoes_1.VitoriaJogador1("Jogador 1 venceu");
+            }
+            if (this.casas[i][0] === this.jogador2.valor && this.casas[i][1] === this.jogador2.valor && this.casas[i][2] === this.jogador2.valor) {
+                throw new excessoes_1.VitoriaJogador2("Jogador 2 venceu");
             }
         }
-    };
-    Tabuleiro.prototype.verificarColuna = function () {
-        for (var j = 0; j < this.casas.length; j++) {
-            if (this.casas[0][j] === this.casas[1][j] && this.casas[1][j] === this.casas[2][j]) {
-                throw new excessoes_1.VitoriaObtida("Partida finalizada - coluna");
+    }
+    verificarColuna() {
+        for (let j = 0; j < this.casas.length; j++) {
+            if (this.casas[0][j] === this.jogador1.valor && this.casas[1][j] === this.jogador1.valor && this.casas[2][j] === this.jogador1.valor) {
+                throw new excessoes_1.VitoriaJogador1("Jogador 1 venceu.");
+            }
+            if (this.casas[0][j] === this.jogador2.valor && this.casas[1][j] === this.jogador2.valor && this.casas[2][j] === this.jogador2.valor) {
+                throw new excessoes_1.VitoriaJogador2("Jogador 2 venceu.");
             }
         }
-    };
-    Tabuleiro.prototype.verificarDiagonal = function () {
-        if (this.casas[0][0] === this.casas[1][1] && this.casas[1][1] === this.casas[2][2]) {
-            throw new excessoes_1.VitoriaObtida("Partida finalizada - diagonal1");
+    }
+    verificarDiagonal() {
+        if (this.casas[0][0] === this.jogador1.valor && this.casas[1][1] === this.jogador1.valor && this.casas[2][2] === this.jogador1.valor) {
+            throw new excessoes_1.VitoriaJogador1("Jogador 1 venceu.");
         }
-        if (this.casas[2][0] === this.casas[1][1] && this.casas[1][1] === this.casas[0][2]) {
-            throw new excessoes_1.VitoriaObtida("Partida finalizada - diagonal2");
+        if (this.casas[2][0] === this.jogador2.valor && this.casas[1][1] === this.jogador2.valor && this.casas[0][2] === this.jogador2.valor) {
+            throw new excessoes_1.VitoriaJogador2("Jogador 2 venceu.");
         }
-    };
-    Tabuleiro.prototype.verificarEmpate = function () {
-        for (var i = 0; i < this.casas.length; i++) {
-            for (var j = 0; j < this.casas.length; j++) {
+    }
+    verificarEmpate() {
+        for (let i = 0; i < this.casas.length; i++) {
+            for (let j = 0; j < this.casas.length; j++) {
                 if (this.casas[i][j] === "0") {
                     return;
                 }
             }
         }
         throw new excessoes_1.EmpateObitido("A partida terminou com empate entre os jogadores.");
-    };
-    Tabuleiro.prototype.verificarVitoria = function () {
+    }
+    verificarVitoria() {
         try {
             this.verificarLinha();
             this.verificarColuna();
@@ -92,29 +80,27 @@ var Tabuleiro = /** @class */ (function (_super) {
                 throw new excessoes_1.VitoriaObtida("Jogo encerrado.");
             }
             if (error instanceof excessoes_1.EmpateObitido) {
-                throw new excessoes_1.EmpateObitido("Parrtida encerrada em um empate.");
+                throw new excessoes_1.EmpateObitido("Partida encerrada em um empate.");
             }
         }
-    };
-    return Tabuleiro;
-}(MatrizDoJogo));
+    }
+}
 exports.Tabuleiro = Tabuleiro;
-var Jogador = /** @class */ (function () {
-    function Jogador(valor) {
+class Jogador {
+    constructor(valor) {
         this.valor = valor;
         this.pontosjogaodor = 0;
     }
-    Jogador.prototype.localizarPosicao = function (posicao) {
-        var linha = Number(posicao[0]);
-        var coluna = Number(posicao[1]);
+    localizarPosicao(posicao) {
+        let linha = Number(posicao[0]);
+        let coluna = Number(posicao[1]);
         return [linha, coluna];
-    };
-    Jogador.prototype.inserir = function (posicao, tabuleiro) {
-        var localizar = this.localizarPosicao(posicao);
+    }
+    inserir(posicao, tabuleiro) {
+        let localizar = this.localizarPosicao(posicao);
         tabuleiro.casas[localizar[0]][localizar[1]] = this.valor;
-    };
-    return Jogador;
-}());
+    }
+}
 exports.Jogador = Jogador;
 ;
 // let player1:Jogador = new Jogador("x");
