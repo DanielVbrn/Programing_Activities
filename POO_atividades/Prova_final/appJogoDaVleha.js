@@ -74,49 +74,51 @@ function verRegrasDojogo() {
     }
 }
 function jogadasNapartida(tabuleiro) {
-    console.log("(Player 1)");
-    let jogadaPlayer1 = input("Digite a posição que deseja inserir o valor no formato[LC]: ");
-    tabuleiro.jogador1.inserir(jogadaPlayer1, tabuleiro);
-    console.table(tabuleiro.casas);
-    tabuleiro.verificarVitoria();
-    console.log("(Player 2)");
-    let jogadaPlayer2 = input("Digite a posição que deseja inserir o valor no formato[LC]: ");
-    tabuleiro.jogador2.inserir(jogadaPlayer2, tabuleiro);
-    console.table(tabuleiro.casas);
-    tabuleiro.verificarVitoria();
-    console.log("(Player 1)");
-    jogadaPlayer1 = input("Digite a posição que deseja inserir o valor no formato[LC]: ");
-    tabuleiro.jogador1.inserir(jogadaPlayer1, tabuleiro);
-    console.table(tabuleiro.casas);
-    tabuleiro.verificarVitoria();
-    console.log("(Player 2)");
-    jogadaPlayer2 = input("Digite a posição que deseja inserir o valor no formato[LC]: ");
-    tabuleiro.jogador2.inserir(jogadaPlayer2, tabuleiro);
-    console.table(tabuleiro.casas);
-    tabuleiro.verificarVitoria();
-    console.log("(Player 1)");
-    jogadaPlayer1 = input("Digite a posição que deseja inserir o valor no formato[LC]: ");
-    tabuleiro.jogador1.inserir(jogadaPlayer1, tabuleiro);
-    console.table(tabuleiro.casas);
-    tabuleiro.verificarVitoria();
-    console.log("(Player 2)");
-    jogadaPlayer2 = input("Digite a posição que deseja inserir o valor no formato[LC]: ");
-    tabuleiro.jogador2.inserir(jogadaPlayer2, tabuleiro);
-    console.table(tabuleiro.casas);
-    tabuleiro.verificarVitoria();
-    console.log("(Player 1)");
-    jogadaPlayer1 = input("Digite a posição que deseja inserir o valor no formato[LC]: ");
-    tabuleiro.jogador1.inserir(jogadaPlayer1, tabuleiro);
-    console.table(tabuleiro.casas);
-    tabuleiro.verificarVitoria();
-    console.log("(Player 2)");
-    jogadaPlayer2 = input("Digite a posição que deseja inserir o valor no formato[LC]: ");
-    tabuleiro.jogador2.inserir(jogadaPlayer2, tabuleiro);
-    console.table(tabuleiro.casas);
-    tabuleiro.verificarVitoria();
-    console.log("(Player 1)");
-    jogadaPlayer1 = input("Digite a posição que deseja inserir o valor no formato[LC]: ");
-    tabuleiro.jogador1.inserir(jogadaPlayer1, tabuleiro);
-    console.table(tabuleiro.casas);
-    tabuleiro.verificarVitoria();
+    for (let i = 0; i < 5; i++) {
+        console.log("(Player 1)");
+        let jogadaPlayer1 = input("Digite a posição que deseja inserir o valor no formato[LC]: ");
+        tabuleiro.jogador1.inserir(jogadaPlayer1, tabuleiro);
+        console.table(tabuleiro.casas);
+        tabuleiro.verificarVitoria();
+        console.log("(Player 2)");
+        let jogadaPlayer2 = input("Digite a posição que deseja inserir o valor no formato[LC]: ");
+        tabuleiro.jogador2.inserir(jogadaPlayer2, tabuleiro);
+        console.table(tabuleiro.casas);
+        tabuleiro.verificarVitoria();
+    }
+    // console.log("(Player 1)");
+    // jogadaPlayer1 = input("Digite a posição que deseja inserir o valor no formato[LC]: ")
+    // tabuleiro.jogador1.inserir(jogadaPlayer1,tabuleiro);
+    // console.table(tabuleiro.casas);
+    // tabuleiro.verificarVitoria();
+    // console.log("(Player 2)");
+    // jogadaPlayer2 = input("Digite a posição que deseja inserir o valor no formato[LC]: ")
+    // tabuleiro.jogador2.inserir(jogadaPlayer2,tabuleiro);
+    // console.table(tabuleiro.casas);
+    // tabuleiro.verificarVitoria();
+    // console.log("(Player 1)");
+    // jogadaPlayer1 = input("Digite a posição que deseja inserir o valor no formato[LC]: ")
+    // tabuleiro.jogador1.inserir(jogadaPlayer1,tabuleiro);
+    // console.table(tabuleiro.casas);
+    // tabuleiro.verificarVitoria();
+    // console.log("(Player 2)");
+    // jogadaPlayer2 = input("Digite a posição que deseja inserir o valor no formato[LC]: ")
+    // tabuleiro.jogador2.inserir(jogadaPlayer2,tabuleiro);
+    // console.table(tabuleiro.casas);
+    // tabuleiro.verificarVitoria();
+    // console.log("(Player 1)");
+    // jogadaPlayer1 = input("Digite a posição que deseja inserir o valor no formato[LC]: ")
+    // tabuleiro.jogador1.inserir(jogadaPlayer1,tabuleiro);
+    // console.table(tabuleiro.casas);
+    // tabuleiro.verificarVitoria();
+    // console.log("(Player 2)");
+    // jogadaPlayer2 = input("Digite a posição que deseja inserir o valor no formato[LC]: ")
+    // tabuleiro.jogador2.inserir(jogadaPlayer2,tabuleiro);
+    // console.table(tabuleiro.casas);
+    // tabuleiro.verificarVitoria();
+    // console.log("(Player 1)");
+    // jogadaPlayer1 = input("Digite a posição que deseja inserir o valor no formato[LC]: ")
+    // tabuleiro.jogador1.inserir(jogadaPlayer1,tabuleiro);
+    // console.table(tabuleiro.casas);
+    // tabuleiro.verificarVitoria();
 }

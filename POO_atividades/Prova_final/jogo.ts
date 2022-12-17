@@ -21,16 +21,6 @@ export class Tabuleiro extends MatrizDoJogo implements StatusDaPartida{
 
     }
 
-    zerarTabuleiro():void{
-        for(let i = 0; i < this.casas.length; i++){
-            for (let j = 0; j < this.casas.length; j++) {
-                if(this.casas[i][j] !== "0"){
-                    this.casas[i][j] = '0';
-                }
-               
-            }
-        }
-    }
             
     exibetabuleiro():string[][]{
         return this.casas;
@@ -39,7 +29,7 @@ export class Tabuleiro extends MatrizDoJogo implements StatusDaPartida{
     private verificarLinha():void{
         for(let i = 0; i < this.casas.length; i++) {
             if(this.casas[i][0] === this.jogador1.valor && this.casas[i][1] === this.jogador1.valor && this.casas[i][2] === this.jogador1.valor){
-                throw new VitoriaJogador1("Jogador 1 venceu");
+                throw new VitoriaJogador1("Jogador 1 venceu.");
             }
             if(this.casas[i][0] === this.jogador2.valor && this.casas[i][1] === this.jogador2.valor && this.casas[i][2] === this.jogador2.valor){
                 throw new VitoriaJogador2("Jogador 2 venceu");
@@ -85,22 +75,14 @@ export class Tabuleiro extends MatrizDoJogo implements StatusDaPartida{
     }
 
     verificarVitoria():void{
-        try { 
             this.verificarLinha();       
             this.verificarColuna();           
             this.verificarDiagonal();
             this.verificarEmpate();
-        }catch(error:any) {
-            if(error instanceof VitoriaObtida){
-                throw new VitoriaObtida("Jogo encerrado.");
-            }
-            if(error instanceof EmpateObitido){
-                throw new EmpateObitido("Partida encerrada em um empate.");
-            }
-        }
-    }
 
+    }
 }
+
 
 interface StatusDaPartida{
     verificarVitoria():void;
@@ -113,10 +95,8 @@ interface Jogadas{
 
 export class Jogador implements Jogadas{
     public valor:string;
-    public pontosjogaodor:number;
     constructor(valor:string){
         this.valor = valor;
-        this.pontosjogaodor = 0;
     }
 
 

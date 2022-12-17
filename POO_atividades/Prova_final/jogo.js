@@ -69,20 +69,10 @@ class Tabuleiro extends MatrizDoJogo {
         throw new excessoes_1.EmpateObitido("A partida terminou com empate entre os jogadores.");
     }
     verificarVitoria() {
-        try {
-            this.verificarLinha();
-            this.verificarColuna();
-            this.verificarDiagonal();
-            this.verificarEmpate();
-        }
-        catch (error) {
-            if (error instanceof excessoes_1.VitoriaObtida) {
-                throw new excessoes_1.VitoriaObtida("Jogo encerrado.");
-            }
-            if (error instanceof excessoes_1.EmpateObitido) {
-                throw new excessoes_1.EmpateObitido("Partida encerrada em um empate.");
-            }
-        }
+        this.verificarLinha();
+        this.verificarColuna();
+        this.verificarDiagonal();
+        this.verificarEmpate();
     }
 }
 exports.Tabuleiro = Tabuleiro;
