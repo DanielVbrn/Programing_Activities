@@ -16,11 +16,11 @@ int main(){
                 );
     NoArv* arv2 = NULL;
 
-    cout << qtdNos(arv) << endl;
-    cout << alturaArv(arv) << endl;
-    cout << alturaArv(arv2) << endl;
+    cout << qtdNos(arv) << endl;   //quandtidade de nós
+    cout << alturaArv(arv) << endl; // altura da arvore
+    cout << alturaArv(arv2) << endl;  //altura da avore vazia
     
-    cout << treeContain(arv, 'd') << endl;
+    cout << treeContain(arv, 'd') << endl;    //item presente na arvore
     // cout << treeContain(arv1, 'a') << endl;
     // cout << treeContain(arv1, 'n') << endl;
     // cout << treeContain(arv1, 'l') << endl;
