@@ -5,13 +5,13 @@
 
 int main(){
     NoArv* arv = arv_cria(
-                    'd',
+                    1,
                     arv_cria(
-                        'a',
-                        arv_cria('i',NULL,NULL),
-                        arv_cria('e',NULL,NULL)
+                        2,
+                        arv_cria(4,NULL,NULL),
+                        arv_cria(5,NULL,NULL)
                     ),
-                        arv_cria('n',NULL,arv_cria('l',NULL,NULL)
+                        arv_cria(3,NULL,arv_cria(6,NULL,NULL)
                     )
                 );
     NoArv* arv2 = NULL;
@@ -20,7 +20,7 @@ int main(){
     cout << alturaArv(arv) << endl; // altura da arvore
     cout << alturaArv(arv2) << endl;  //altura da avore vazia
     
-    cout << treeContain(arv, 'd') << endl;    //item presente na arvore
+    cout << treeContain(arv, 1) << endl;    //item presente na arvore
     // cout << treeContain(arv1, 'a') << endl;
     // cout << treeContain(arv1, 'n') << endl;
     // cout << treeContain(arv1, 'l') << endl;

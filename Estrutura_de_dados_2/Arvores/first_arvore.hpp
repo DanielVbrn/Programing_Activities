@@ -7,7 +7,7 @@ using namespace std;
 
 
 struct noArv{
-    char info;
+    int info;
     struct noArv* esq;
     struct noArv* dir;
 };
@@ -18,7 +18,7 @@ NoArv* arv_vazia(){
     return NULL;
 };
 
-NoArv* arv_cria(char c, NoArv* sae, NoArv* sad){
+NoArv* arv_cria(int c, NoArv* sae, NoArv* sad){
     NoArv* p = (NoArv*)malloc(sizeof(NoArv));
     p->info = c;
     p->esq = sae;
@@ -55,7 +55,7 @@ void amplitude(NoArv* raiz){
     }
 }
 
-int qtdNos(NoArv * raiz){
+int qtdNos(NoArv* raiz){
     if(raiz == NULL)return 0;
     return qtdNos(raiz->esq) + qtdNos(raiz->dir) + 1;
 }
