@@ -92,4 +92,42 @@ bool treeContain(NoArv* raiz, int Item){
     return treeContain(raiz->esq, Item) || treeContain(raiz->dir, Item);
 }
 
+bool* eb(NoArv* raiz){
+    if(raiz == NULL)return 0;
+    if(raiz->esq != NULL && raiz->dir != NULL){
+        eb(raiz->dir);
+        eb(raiz->esq);
+    }
+    
+    if(raiz->dir == NULL && raiz->esq == NULL){
+        return;
+    }
 
+}
+
+
+bool igual(NoArv* raiz_A, NoArv* raiz_B){
+    if(raiz_A == NULL && raiz_B == NULL) {
+        return true;
+    } else {
+
+        if(raiz_A->info != raiz_B->info) {   
+            return 0;
+        } 
+        
+        return igual(raiz_A->dir, raiz_B->dir);
+
+        if(raiz_A->esq == raiz_B->esq){
+            return igual(raiz_A->esq, raiz_B->esq);
+        }
+
+        // verificar a esquerda
+        // verificar a direita
+        // se os dois forem verdadeiros: return true
+        // Se um for false: return false
+    }
+
+
+    return false;
+
+}

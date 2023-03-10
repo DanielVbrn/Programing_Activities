@@ -2,6 +2,8 @@
 #include "stdlib.h"
 #include "./first_arvore.hpp"
 
+// Questões 5,4,3,2 e 1
+
 
 int main(){
     NoArv* arv = arv_cria(
