@@ -1,4 +1,8 @@
+#include "stdio.h"
+#include "stdlib.h"
+#include "iostream"
 #include "./first_arvore.hpp"
+using namespace std;
 
 main(){
     NoArv* arv = arv_cria(
@@ -11,4 +15,6 @@ main(){
                     arv_cria(3,NULL,arv_cria(6,NULL,NULL)
                 )
             );
+    cout << eb(arv) << endl;
+    // cout << "oi" << endl;
 }

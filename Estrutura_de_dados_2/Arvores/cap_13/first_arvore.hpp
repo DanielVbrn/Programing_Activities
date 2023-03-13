@@ -92,42 +92,55 @@ bool treeContain(NoArv* raiz, int Item){
     return treeContain(raiz->esq, Item) || treeContain(raiz->dir, Item);
 }
 
-bool* eb(NoArv* raiz){
-    if(raiz == NULL)return 0;
+bool eb(NoArv* raiz){
+    if(raiz == NULL) return false;
     if(raiz->esq != NULL && raiz->dir != NULL){
-        eb(raiz->dir);
-        eb(raiz->esq);
+        return eb(raiz->dir);
+        return eb(raiz->esq);
     }
     
     if(raiz->dir == NULL && raiz->esq == NULL){
-        return;
+        return true;
     }
 
+    return false;
 }
 
 
 bool igual(NoArv* raiz_A, NoArv* raiz_B){
-    if(raiz_A == NULL && raiz_B == NULL) {
+    if (raiz_A == NULL && raiz_B == NULL) {
         return true;
+    } 
+
+    if ( raiz_A == NULL || raiz_B == NULL ) {
+        return false;
     } else {
-
-        if(raiz_A->info != raiz_B->info) {   
-            return 0;
-        } 
-        
-        return igual(raiz_A->dir, raiz_B->dir);
-
-        if(raiz_A->esq == raiz_B->esq){
-            return igual(raiz_A->esq, raiz_B->esq);
+        if ( raiz_A->info != raiz_B->info ) {   
+            return false;
+        } else {      
+            return igual(raiz_A->dir, raiz_B->dir) && igual(raiz_A->esq, raiz_B->esq);  
         }
-
-        // verificar a esquerda
-        // verificar a direita
-        // se os dois forem verdadeiros: return true
-        // Se um for false: return false
     }
-
-
+    // verificar a esquerda
+    // verificar a direita
+    // se os dois forem verdadeiros: return true
+    // Se um for false: return false
     return false;
+
+}
+
+
+int valor(NoArv* raiz){
+    if(arv_vazia()) return NULL;
+    NoArv* a = raiz;
+    NoArv* b = raiz->esq;
+    NoArv* c = raiz->dir;
+
+    if(!arv_vazia()){
+        // cout << b << a->info << c << endl;
+        cout << a->info << endl;
+        valor(raiz->esq);
+        valor(raiz->dir);
+    }
 
 }
