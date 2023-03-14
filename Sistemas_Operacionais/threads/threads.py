@@ -2,6 +2,7 @@ import threading
 
 def thread_1():
     print('Start thread 1 ...')
+    
     for i in range(5):
         print('Thread 1  in progress...')
     

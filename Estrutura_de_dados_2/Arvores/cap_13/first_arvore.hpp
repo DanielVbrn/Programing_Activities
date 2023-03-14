@@ -33,7 +33,7 @@ void arv_imprime(NoArv* raiz){
         arv_imprime(raiz->esq);
         arv_imprime(raiz->dir);
         cout << '>';
-    };
+    }
 };
 
 void amplitude(NoArv* raiz){
@@ -129,18 +129,29 @@ bool igual(NoArv* raiz_A, NoArv* raiz_B){
 
 }
 
+int operacao(char operacao, int esq, int dir){
+    if(operacao == '*') return esq * dir;
+    if(operacao == '+') return esq + dir;
+    if(operacao == '-') return esq - dir;
+    if(operacao == '/') return esq / dir;
+}
 
 int valor(NoArv* raiz){
     if(arv_vazia()) return NULL;
-    NoArv* a = raiz;
-    NoArv* b = raiz->esq;
-    NoArv* c = raiz->dir;
-
-    if(!arv_vazia()){
-        // cout << b << a->info << c << endl;
-        cout << a->info << endl;
-        valor(raiz->esq);
-        valor(raiz->dir);
+    if (raiz->esq == NULL && raiz-> dir == NULL) return raiz->info;
+    else {
+        int esq = valor(raiz->esq);
+        int dir = valor(raiz->esq);
+        return operacao(esq, dir, char(raiz->info));
     }
+
+}
+
+void exibe_A(NoArv* raiz){
+    if(raiz == NULL) return;
+
+    exibe_A(raiz->dir);
+    cout << raiz->info << endl;
+    exibe_A(raiz->esq);
 
 }
