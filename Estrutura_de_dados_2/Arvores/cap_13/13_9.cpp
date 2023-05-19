@@ -16,5 +16,5 @@ main(){
                         3,NULL,arv_cria(6,NULL,NULL)
                     )
                 );
-    exibe_A(arv);
+    exibe_A_dec(arv);
 }

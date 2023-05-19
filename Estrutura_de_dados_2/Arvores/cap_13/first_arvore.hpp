@@ -55,10 +55,14 @@ void amplitude(NoArv* raiz){
     }
 }
 
+
+
 int qtdNos(NoArv* raiz){
     if(raiz == NULL)return 0;
     return qtdNos(raiz->esq) + qtdNos(raiz->dir) + 1;
 }
+
+
 
 int qtdfolhas(NoArv* raiz){
     if(raiz == NULL)return 0;
@@ -68,6 +72,8 @@ int qtdfolhas(NoArv* raiz){
 
     return qtdfolhas(raiz->esq) + qtdfolhas(raiz->dir);
 }
+
+
 
 int alturaArv(NoArv* raiz){
     if(raiz == NULL)return 0;
@@ -81,6 +87,8 @@ int alturaArv(NoArv* raiz){
 
 }
 
+
+
 bool treeContain(NoArv* raiz, int Item){
     if(raiz == NULL){
         return false;
@@ -91,6 +99,8 @@ bool treeContain(NoArv* raiz, int Item){
 
     return treeContain(raiz->esq, Item) || treeContain(raiz->dir, Item);
 }
+
+
 
 bool eb(NoArv* raiz){
     if(raiz == NULL) return false;
@@ -147,11 +157,13 @@ int valor(NoArv* raiz){
 
 }
 
-void exibe_A(NoArv* raiz){
+
+
+void exibe_A_dec(NoArv* raiz){
     if(raiz == NULL) return;
 
-    exibe_A(raiz->dir);
+    exibe_A_dec(raiz->dir);
     cout << raiz->info << endl;
-    exibe_A(raiz->esq);
+    exibe_A_dec(raiz->esq);
 
 }

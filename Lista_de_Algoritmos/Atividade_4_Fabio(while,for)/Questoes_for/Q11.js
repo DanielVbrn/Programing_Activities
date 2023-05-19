@@ -11,14 +11,14 @@ function main(){
       divisor = 0
       
       for (let n = 1  ; n <= count ; n++){
-            if(count % n === 0){
-              divisor++
-            }
+        if(count % n === 0){
+          divisor++
+        }
           
-        }
-        if(divisor === 2){
-          console.log(count)
-        }
+      }
+      if(divisor === 2){
+        console.log(count)
+      }
         
     }
 }
