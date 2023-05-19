@@ -3,8 +3,8 @@
 #include <iostream>
 using namespace std;
 
-#ifndef THREADED_TREE
-#define THREADED_TREE
+// #ifndef THREADED_TREE
+// #define THREADED_TREE
 
 template<class T>
 class ArvoreNo {
@@ -116,7 +116,7 @@ class Arvore {
         ArvoreNo<T>* root;
 };
 
-#endif
+// #endif
 
 
 int main () {
