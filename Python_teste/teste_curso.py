@@ -1,2 +1,5 @@
-my_list = [[0, 1, 2, 3] for i in range(2)]
-print(my_list[1][3])
+# Qual é a saída do seguinte trecho de código se o usuário digitar duas linhas contendo 2 e 4 respectivamente?
+
+x = float(input())
+y = float(input())
+print(y ** (1 / x))

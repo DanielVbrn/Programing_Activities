@@ -1,0 +1,10 @@
+1-Morris IN_ORDER
+A) 3-5-7-10-15-20-24
+
+B) O algoritmo de morris inorder percorre a arvore a partir do nó raiz verificando
+se a raiz é vazia, caso não seja ele passa a verificar se o nó a esquerda é nulo, 
+enquanto for diferente de nulo ele percorre os nós a esquerda, caso seja nulo 
+o algoritmo utiliza a função visit() para verifciar o nó atual e partir para verificar o nó
+a direita.
+
+C)Está correto.
