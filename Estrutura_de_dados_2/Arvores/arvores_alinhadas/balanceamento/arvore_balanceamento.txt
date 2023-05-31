@@ -11,3 +11,4 @@
           63
 1.3 - A árvore resultante está balanceada, pois cada nó da árvore possui uma 
 altura de no máximo 1 entre as subárvores da esquerda e da direita.  
+
