@@ -1,0 +1,6 @@
+select * from equipamentos;
+select tombo_id from equipamentos where tombo_id <= 11;
+select tombo_id from equipamentos where nome_equip ilike '%_3';
+select * from usuario;
+select id_user from usuario where name_user ilike '%_ra';
+select 
