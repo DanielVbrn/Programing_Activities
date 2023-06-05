@@ -4,4 +4,4 @@
 1.3- A árvore resultante não está balanceada. 
 Ela está inclinada para a direita, pois a maioria dos nós 
 está posicionada no lado direito da árvore.
-1.4- A resolução está no algorítmo "rotationTree.cpp".
+1.4- A resolução está no algorítmo "rotatedTree.cpp".
