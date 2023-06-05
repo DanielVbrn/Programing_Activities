@@ -5,3 +5,4 @@
 Ela está inclinada para a direita, pois a maioria dos nós 
 está posicionada no lado direito da árvore.
 1.4- A resolução está no algorítmo "rotatedTree.cpp".
+1.5- <7<><22<><14<><40<><30<><63<><80>>>>>>>

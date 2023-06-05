@@ -1,0 +1,24 @@
+1-Morris IN_ORDER:
+A) 3-5-7-10-15-20-24
+B) O algoritmo de morris inorder percorre a arvore a partir do nó raiz atual que é 10, em seguida verifica
+se a raiz tem filho a esquerda, caso tenha , ele verifica se os nós a esquerda são nulos, 
+enquanto for diferente de nulo ele visita os nós a esquerda e imprime caso o nó não tenha mais filhos, caso seja nulo 
+o algoritmo utiliza a função visit() para verifciar o nó atual. Verifica-se o nó atual tem um sucessor. 
+Como o nó atual tem um nó direito, é definido como bit sucessor o 1 e seguimos para o nó direito.
+O nó atual agora é o nó com valor 5 novamente.
+Como o algorítimo já visitou o nó a esquerdo, imprimimos o valor do nó atual (5).
+Verificamos novamente se o nó atual tem um sucessor. Como o nó atual tem um nó direito (7), definimos o bit de sucessor 
+como 1 e seguimos para o nó direito. O nó atual agora é o nó com valor 7.
+Como o nó atual não tem um nó esquerdo, imprimimos o valor do nó atual (7).
+Verificamos se o nó atual tem um sucessor. Como o nó atual não tem um nó direito, definimos o bit de sucessor como 0.
+Agora, voltamos para o nó com valor 5, pois ele é o sucessor do nó atual.
+O nó atual agora é o nó com valor 5 novamente.
+Verificamos se o nó atual tem um sucessor. Como o nó atual tem um nó direito (7), definimos o bit de sucessor como 0.
+Avançamos para o nó direito do nó atual.
+O nó atual agora é o nó com valor 20.Como o nó atual tem um nó esquerdo (15), seguimos para o nó esquerdo.
+O nó atual agora é o nó com valor 15.
+Como o nó atual não tem um nó esquerdo, imprimimos o valor do nó atual (15).
+Verificamos se o nó atual tem um sucessor. Como o nó atual tem um nó direito, definimos o bit de sucessor como 1 e seguimos
+para o nó direito.O nó atual agora é o nó
+
+C)Está correto.

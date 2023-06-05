@@ -1,18 +1,17 @@
-1- Algorítmo de morris pre order
-A)10 - 5 - 3 - 7 - 20 - 15 - 24.
-B)Comece com o nó raiz, que é 10, como o ponteiro atual é 10 e o ponteiro esquerdo de 10 não é nulo.
-procura pelo predecessor, que é o nó 7 (o nó mais à direita na subárvore esquerda de 10).
-O predecessor não tem um ponteiro direito nulo, portanto desfaz a ligação e imprime o valor do nó atual, que é 10,
-depois atualiza o ponteiro atual para o nó direito, que é 5. O ponteiro esquerdo de 5 não é nulo então procura 
-pelo predecessor, que é o nó 3, o predecessor não tem um ponteiro direito nulo, portanto desfaz a ligação.
-e imprime o valor do nó atual, que é 5 e atualiza o ponteiro atual para o nó direito, que é 7.
-O ponteiro esquerdo de 7 é nulo então imprime o valor do nó atual, que é 7, e depois atualiza o ponteiro atual para o 
-nó direito, que é 10 (aqui ocorre uma retrocessão). O ponteiro esquerdo de 10 é nulo.
-Procura pelo predecessor, que é o nó 20. O predecessor tem um ponteiro direito nulo.
-Faz com que o ponteiro direito do predecessor aponte para o nó atual, que é 10, depois atualiza 
-o ponteiro atual para o nó esquerdo, que é 20. O ponteiro esquerdo de 20 não é nulo.
-então procura pelo predecessor, que é o nó 15.O predecessor não tem um ponteiro direito nulo, 
-portanto desfaça a ligação. Imprima o valor do nó atual, que é 20. então atualiza o ponteiro atual para o nó direito, 
-que é 24. O ponteiro esquerdo de 24 é nulo então imprime o valor do nó atual, que é 24 e em seguida atualiza o ponteiro 
-atual para o nó direito, que é nulo. O ponteiro atual é nulo. O percurso em ordem resultante é =  10, 5, 3, 7, 20, 15, 24.
-C)O código está correto.
+1-Arvore de morris preorder
+A)10 - 5 - 3 - 7 - 20 - 15 - 24
+B)O algorítmo de morris começa com o nó raiz, que é 10 e é o atual, como o ponteiro esquerdo de 10 não é nulo, 
+o algorítmo busca o predecessor, que é o nó 7 (o nó mais à direita na subárvore esquerda de 10).
+O predecessor não tem um ponteiro direito nulo, portanto desfaz a ligação e imprime o valor do nó atual, que é 10, 
+atualiza o ponteiro atual para o nó direito, que é 5. O ponteiro esquerdo de 5 não é nulo, encontra o predecessor, que é o nó 3.
+o predecessor não tem um ponteiro direito nulo, portanto desfaz a ligação e imprime o valor do nó atual, que é 5 e 
+atualiza o ponteiro atual para o nó direito, que é 7. O ponteiro esquerdo de 7 é nulo então imprime o valor do nó atual, que é 7, depois 
+atualiza o ponteiro atual para o nó direito, que é 10 (aqui ocorre uma retrocessão). O ponteiro esquerdo de 10 é nulo. então o algorítmo
+encontra o predecessor, que é o nó 20 e esse predecessor tem um ponteiro direito nulo.
+O algorítmo faz com que o ponteiro direito do predecessor aponte para o nó atual, que é 10 depois atualiza o ponteiro 
+atual para o nó esquerdo, que é 20. O ponteiro esquerdo de 20 não é nulo. Encontra o predecessor, que é o nó 15.
+O predecessor não tem um ponteiro direito nulo, portanto o algorítmo desfaz a ligação, imprime o valor do nó atual, que é 20, atualiza o 
+ponteiro atual para o  nó direito, que é 24. O ponteiro esquerdo de 24 é nulo, imprime o valor do nó atual, que é 24,
+atualiza o ponteiro atual para o nó direito, que é nulo. O ponteiro atual é nulo.
+O percurso em ordem resultante é = 10, 5, 3, 7, 20, 15, 24.
+C)O algorítmo está correto.
