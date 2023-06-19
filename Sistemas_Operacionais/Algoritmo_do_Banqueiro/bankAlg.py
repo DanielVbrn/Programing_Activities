@@ -46,9 +46,6 @@ def main():
         
 
 
-    # Plotando a utilização dos recursos e o status de cada processo ao longo do tempo
-
-
 def secureSystem(processes, available, max_resources, allocated):
     num_processes = len(processes)
     num_resources = len(available)
