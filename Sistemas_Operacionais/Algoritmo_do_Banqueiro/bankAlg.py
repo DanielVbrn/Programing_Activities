@@ -8,7 +8,7 @@ def main():
     menu += "\n"
     print(menu)
 
-    processes = [0, 1, 2, 3]  # Identificadores dos processos
+    processes = [0, 1, 2, 3]  # Id de cada processo
     available = [7, 4, 3]  # Recursos disponíveis
     available2 = [7, 1, 2]  # Recursos disponíveis
     max_resources = [
