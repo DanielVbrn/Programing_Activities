@@ -10,7 +10,7 @@ def main():
 
     processes = [0, 1, 2, 3]  # Identificadores dos processos
     available = [7, 4, 3]  # Recursos disponíveis
-    available2 = [7, 1, 2]  # Recursos disponíveis
+    available2 = [1, 1, 2]  # Recursos disponíveis
     max_resources = [
         [4, 5, 3],
         [3, 2, 2],
@@ -57,9 +57,8 @@ def secureSystem(processes, available, max_resources, allocated):
     work = available.copy()
     finish = [False] * num_processes
 
-    # Verificando se um processo pode ser executado em segurança
     history = []
-    process_status = [False] * num_processes  # Status do processo (Executando ou Bloqueado)
+    # process_status = [False] * num_processes  # Status do pro
 
     while True:
         found = False
@@ -73,21 +72,21 @@ def secureSystem(processes, available, max_resources, allocated):
 
                 if can_execute:
                     # Liberando os recursos alocados
+                    finish[i] = True
                     for j in range(num_resources):
                         work[j] += allocated[i][j]
 
-                    finish[i] = True
                     found = True
 
-        # Atualizando o status dos processos (Executando ou Bloqueado)
-        process_status = ["Executando" if finish[i] else "Bloqueado" for i in range(num_processes)]
 
         # Adicionando o estado atual à lista de histórico
-        history.append(work.copy())
+
 
         # Verificando se todos os processos foram concluídos
         if not found:
             break
+        
+        history.append(work.copy())
 
     # Verificando se o sistema está em um estado seguro e obtendo o histórico
     safe = all(finish)
@@ -125,9 +124,6 @@ def insecureSystem(processes, available2, max_resources, allocated):
 
                     finish[i] = True
                     found = True
-
-        # Atualizando o status dos processos (Executando ou Bloqueado)
-        process_status = ["Executando" if finish[i] else "Bloqueado" for i in range(num_processes)]
 
         # Adicionando o estado atual à lista de histórico
         history.append(work.copy())
