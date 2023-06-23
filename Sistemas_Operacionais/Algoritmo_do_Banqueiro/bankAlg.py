@@ -8,7 +8,7 @@ def main():
     menu += "\n"
     print(menu)
 
-    processes = [0, 1, 2, 3]  # Identificadores dos processos
+    processes = [0, 1, 2, 3]  # Id de cada processo
     available = [7, 4, 3]  # Recursos disponíveis
     available2 = [1, 1, 2]  # Recursos disponíveis
     max_resources = [
@@ -16,13 +16,13 @@ def main():
         [3, 2, 2],
         [9, 0, 2],
         [6, 2, 2],
-    ]  # Máximo de recursos necessários para cada processo
+    ]  
     allocated = [
         [0, 1, 0],
         [2, 0, 0],
         [3, 0, 2],
         [2, 1, 1],
-    ]  # Recursos alocados para cada processo
+    ]  
         
     option = input("Opção: ")
     if(option == "1"):
@@ -44,9 +44,6 @@ def main():
         for state in history:
             print(state)
         
-
-
-    # Plotando a utilização dos recursos e o status de cada processo ao longo do tempo
 
 
 def secureSystem(processes, available, max_resources, allocated):
