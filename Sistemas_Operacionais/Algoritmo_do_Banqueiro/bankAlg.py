@@ -8,7 +8,7 @@ def main():
     menu += "\n"
     print(menu)
 
-    processes = [0, 1, 2, 3]  # Identificadores dos processos
+    processes = [0, 1, 2, 3]  # Id de cada processo
     available = [7, 4, 3]  # Recursos disponíveis
     available2 = [1, 1, 2]  # Recursos disponíveis
     max_resources = [
@@ -16,13 +16,13 @@ def main():
         [3, 2, 2],
         [9, 0, 2],
         [6, 2, 2],
-    ]  # Máximo de recursos necessários para cada processo
+    ]  
     allocated = [
         [0, 1, 0],
         [2, 0, 0],
         [3, 0, 2],
         [2, 1, 1],
-    ]  # Recursos alocados para cada processo
+    ]  
         
     option = input("Opção: ")
     if(option == "1"):
@@ -46,9 +46,6 @@ def main():
         
 
 
-    # Plotando a utilização dos recursos e o status de cada processo ao longo do tempo
-
-
 def secureSystem(processes, available, max_resources, allocated):
     num_processes = len(processes)
     num_resources = len(available)
@@ -57,9 +54,8 @@ def secureSystem(processes, available, max_resources, allocated):
     work = available.copy()
     finish = [False] * num_processes
 
-    # Verificando se um processo pode ser executado em segurança
     history = []
-    process_status = [False] * num_processes  # Status do processo (Executando ou Bloqueado)
+    # process_status = [False] * num_processes  # Status do pro
 
     while True:
         found = False
@@ -73,21 +69,21 @@ def secureSystem(processes, available, max_resources, allocated):
 
                 if can_execute:
                     # Liberando os recursos alocados
+                    finish[i] = True
                     for j in range(num_resources):
                         work[j] += allocated[i][j]
 
-                    finish[i] = True
                     found = True
 
-        # Atualizando o status dos processos (Executando ou Bloqueado)
-        process_status = ["Executando" if finish[i] else "Bloqueado" for i in range(num_processes)]
 
         # Adicionando o estado atual à lista de histórico
-        history.append(work.copy())
+
 
         # Verificando se todos os processos foram concluídos
         if not found:
             break
+        
+        history.append(work.copy())
 
     # Verificando se o sistema está em um estado seguro e obtendo o histórico
     safe = all(finish)
@@ -125,9 +121,6 @@ def insecureSystem(processes, available2, max_resources, allocated):
 
                     finish[i] = True
                     found = True
-
-        # Atualizando o status dos processos (Executando ou Bloqueado)
-        process_status = ["Executando" if finish[i] else "Bloqueado" for i in range(num_processes)]
 
         # Adicionando o estado atual à lista de histórico
         history.append(work.copy())
