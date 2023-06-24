@@ -10,7 +10,7 @@ def main():
 
     processes = [0, 1, 2, 3]  # Identificadores dos processos
     available = [7, 4, 3]  # Recursos disponíveis
-    available2 = [7, 1, 2]  # Recursos disponíveis
+    available2 = [1, 1, 2]  # Recursos disponíveis
     max_resources = [
         [4, 5, 3],
         [3, 2, 2],
