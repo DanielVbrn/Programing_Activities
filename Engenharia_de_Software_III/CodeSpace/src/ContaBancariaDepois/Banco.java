@@ -23,7 +23,7 @@ public class Banco {
     public void depositar(double value, int numeroConta) {
         Conta conta = findConta(numeroConta);
         if (conta != null) {
-            conta.sacar(value);
+            conta.depositar(value);
         }
     }
 
