@@ -1,0 +1,7 @@
+É possivel zerar o acoplamento em um software simples ou complexo? Justifique.
+
+R: O acoplamento entre componentes de software é uma consequência inevitável da forma como os sistemas de
+software são projetados e funcionam. Independentemente do software, as razões de as classes terem que possuir
+acoplamento, se deve à dependências funcionais, requisitos de negócios, complexidados do sistema, a retutilização do
+código, etc.
+

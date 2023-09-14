@@ -1,0 +1,14 @@
+2 - Contextualize o conceito de coesão de acordo com as fontes abaixo:
+A. No contexto de coesão uma classe deve ter um método que manipule o máximo de variáveis que puder,
+pois uma classe onde cada variável é utilizada por um método é totalmente coesa, pois todas as partes
+do código trabalham em conjunto e também dão origem a outras classes específicas, segundo o livro Clean Code.
+
+B. No contexto de coesão, a reutilização e manutenção de classes torna-se um problema diante de um cenário em que
+esta classe depende por parte de atributo ou método, de outra classe que se aplica somente a essa regra de negócio,
+isso fazendo com que em uma classe, um método dependa de um atributo de um classe externa a essa, e a coesão não seja
+aplicada da maneira correta.
+
+C. O princípio da responsabilidade única define que cada classe deve ter uma responsabilidade única, isso tornando uma
+classe coesa pelo fato que essa terá como objetivo soluionar um problema específico com seus atributos e métodos trbalhando
+conjuntamente sem dependências externas com outra classe.
+

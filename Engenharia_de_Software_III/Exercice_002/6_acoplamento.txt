@@ -1,0 +1,5 @@
+Explique com suas palavras o que é o acoplamento entre classes.
+O acoplamento entre classes é a necessidade que uma classe possui da outra para executar suas tarefas
+ou se comportar diante de determinados problemas, quanto mais forte o acoplamento entre classes, mais elas dependem
+umas das outras, a exemplo de uma classe que necessita de uma instancia de outra dentro do seu método ou de um atributo
+presente em outra classe.

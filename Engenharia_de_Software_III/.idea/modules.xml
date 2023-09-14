@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CodeSpace/CodeSpace.iml" filepath="$PROJECT_DIR$/CodeSpace/CodeSpace.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Exercice_002/3_Compra/Compra.iml" filepath="$PROJECT_DIR$/Exercice_002/3_Compra/Compra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Engenharia_de_Software_III.iml" filepath="$PROJECT_DIR$/.idea/Engenharia_de_Software_III.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Exercice_002/Exercice_002.iml" filepath="$PROJECT_DIR$/Exercice_002/Exercice_002.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Exercice_002/4_Utilitarios/Utilitarios.iml" filepath="$PROJECT_DIR$/Exercice_002/4_Utilitarios/Utilitarios.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cadastro_java/cadastro_java.iml" filepath="$PROJECT_DIR$/cadastro_java/cadastro_java.iml" />
+    </modules>
+  </component>
+</project>
