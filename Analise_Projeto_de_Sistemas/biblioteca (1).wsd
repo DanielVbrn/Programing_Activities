@@ -1,0 +1,72 @@
+@startuml biblioteca 
+    class Biblioteca{
+        
+    }
+    
+    class Empresa{
+        +nome:String
+        -cnpj:String
+    }
+
+    class Funcionario{
+        -cod_func:number
+        +nome:String
+        +fone:String
+
+        +reservar()
+        +emprestar()
+    }
+
+
+    class Reserva {
+        -id_reserva:number
+        -cod_func:number
+        -cod_publicacao:number
+        -id_user:number
+        +dt_disponivel:Date
+
+    }
+
+    class User {
+        id_user:number
+        name:String
+        telefone:String
+    }
+
+    class Publicacao{
+        -cod_publicacao
+        +titulo:String
+        +autor:String
+
+    }
+
+    class Livro {
+        titulo:String
+        autor:String
+        publicacao:Publicacao
+    }
+
+    class Revista {
+        titulo:String
+        name:String
+        publicacao:Publicacao
+    }
+
+    class Jornal {
+        titulo:String
+        name:String
+        publicacao:Publicacao
+    }
+
+    Empresa *-- Biblioteca
+    Biblioteca *-- Funcionario
+    Funcionario - Biblioteca : trabalha >
+    Publicacao  <|-- Livro
+    Publicacao  <|-- Revista
+    Publicacao  <|-- Jornal
+    Reserva *-- Publicacao
+    Reserva *-- Funcionario
+    Reserva *-- User
+
+
+@enduml
