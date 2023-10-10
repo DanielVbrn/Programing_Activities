@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9b0415b5-734e-4467-aa0d-7164e08326c4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/Engenharia_de_Software_III.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/Engenharia_de_Software_III.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filePosts.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package_rede_social/Autor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/package_rede_social/Autor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package_rede_social/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/package_rede_social/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package_rede_social/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/package_rede_social/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package_rede_social/RepositorioPosts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/package_rede_social/RepositorioPosts.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2W4LmahoOQKuaq94To3e8F3eU05" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/daniel/Documentos/ADS_FOLDER/Programing_Activities/Engenharia_de_Software_III",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "onboarding.tips.debug.path": "/home/daniel/Documentos/ADS_FOLDER/Programing_Activities/Engenharia_de_Software_III/solid_principles/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="package_rede_social.java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="package_rede_social.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9b0415b5-734e-4467-aa0d-7164e08326c4" name="Changes" comment="" />
+      <created>1695987066405</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695987066405</updated>
+      <workItem from="1695987067544" duration="1227000" />
+      <workItem from="1696008414485" duration="613000" />
+      <workItem from="1696468994105" duration="1642000" />
+      <workItem from="1696502176326" duration="18400000" />
+      <workItem from="1696527395343" duration="590000" />
+      <workItem from="1696528587538" duration="4048000" />
+      <workItem from="1696532654605" duration="123000" />
+      <workItem from="1696534310447" duration="263000" />
+      <workItem from="1696537441132" duration="101000" />
+      <workItem from="1696537606648" duration="367000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

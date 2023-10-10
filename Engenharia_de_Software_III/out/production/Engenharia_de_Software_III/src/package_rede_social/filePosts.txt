@@ -1,0 +1,14 @@
+ID: 10
+texto: Olá Mundo!
+Autor: Emanuel Santos Brito
+Data: Fri Oct 06 07:50:02 BRT 2023
+Quantidade de likes: 0
+
+
+ID: 11
+texto: Testes Automatizados
+Autor: Emanuel Santos Brito
+Data: Fri Oct 06 07:50:02 BRT 2023
+Quantidade de likes: 0
+
+

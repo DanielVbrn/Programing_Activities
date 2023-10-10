@@ -1,4 +1,4 @@
-package package_rede_social;
+package src.package_rede_social;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,17 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioPosts {
-    private String filePath;
+    String filePath = System.getProperty("user.dir") + "/solid_principles/src/package_rede_social/filePosts.txt";
 
-    public RepositorioPosts(String filePath) {
-        this.filePath = filePath;
-    }
+
 
     public void saveData( Post post ) {
-        try (FileWriter data = new FileWriter(filePath)){
+        try (FileWriter data = new FileWriter(filePath, true)){
             data.write("ID: " + post.getId()+ "\n");
             data.write("texto: " + post.getTexto()+ "\n");
-            data.write("Autor: " + post.getAutor()+ "\n");
+            data.write("Autor: " + post.getAutor().getNome()+ "\n");
             data.write("Data: " + post.getData()+ "\n");
             data.write("Quantidade de likes: " + post.getQuantidadeDeLikes()+ "\n");
             data.write("\n" + "\n");

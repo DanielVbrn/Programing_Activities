@@ -1,7 +1,0 @@
-ID: 10
-texto: Olá Mundo!
-Autor: package_rede_social.Autor@f6f4d33
-Data: Thu Oct 05 15:44:21 BRT 2023
-Quantidade de likes: 0
-
-

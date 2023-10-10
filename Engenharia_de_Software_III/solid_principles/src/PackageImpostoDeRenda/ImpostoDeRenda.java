@@ -1,4 +1,4 @@
-package PackageImpostoDeRenda;
+package src.PackageImpostoDeRenda;
 
 import java.util.List;
 
@@ -14,9 +14,7 @@ public class ImpostoDeRenda {
         this.despesas = despesas;
     }
 
-    public String getCpfContribuinte() {
-        return cpfContribuinte;
-    }
+    public String getCpfContribuinte() { return cpfContribuinte; }
 
     public List<Double> getRendimentos() {
         return rendimentos;

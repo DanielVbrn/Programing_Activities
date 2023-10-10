@@ -1,4 +1,4 @@
-package PackageImpostoDeRenda;
+package src.PackageImpostoDeRenda;
 
 public class RelatorioImpostoRenda {
     public void gerarRelatorio(ImpostoDeRenda impostoDeRenda, double impostoDevido) {

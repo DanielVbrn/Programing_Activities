@@ -1,4 +1,4 @@
-package packageCalculator;
+package src.packageCalculator;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -11,6 +11,8 @@ public class Main {
         List<Operacao> operacoes = new ArrayList<>();
         operacoes.add(new Soma());
         operacoes.add(new Subtracao());
+        operacoes.add(new Multiplicacao());
+        operacoes.add(new Divisao());
 
         List<Double> resultados = calculadora.calcular(operacoes);
 

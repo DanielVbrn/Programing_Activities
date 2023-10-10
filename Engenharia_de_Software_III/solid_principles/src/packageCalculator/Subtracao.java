@@ -1,4 +1,4 @@
-package packageCalculator;
+package src.packageCalculator;
 
 public class Subtracao implements Operacao{
 

@@ -1,4 +1,4 @@
-package PackageImpostoDeRenda;
+package src.PackageImpostoDeRenda;
 
 public class ValidacaoImpostodeRenda {
     public static boolean validarImpostoDeRenda(ImpostoDeRenda impostoDeRenda) {

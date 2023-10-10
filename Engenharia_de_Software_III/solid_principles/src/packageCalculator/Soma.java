@@ -1,4 +1,4 @@
-package packageCalculator;
+package src.packageCalculator;
 
 
 public class Soma implements Operacao{

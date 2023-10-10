@@ -1,4 +1,4 @@
-package packageCalculator;
+package src.packageCalculator;
 
 import java.util.ArrayList;
 import java.util.List;

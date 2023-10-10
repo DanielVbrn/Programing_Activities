@@ -1,4 +1,4 @@
-package package_rede_social;
+package src.package_rede_social;
 
 import java.util.Date;
 
