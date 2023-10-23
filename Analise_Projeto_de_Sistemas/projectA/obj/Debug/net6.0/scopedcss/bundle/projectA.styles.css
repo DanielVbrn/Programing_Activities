@@ -1,3 +1,19 @@
+/* _content/projectA/Views/Home/Index.cshtml.rz.scp.css */
+*[b-jeozniuvnx] {
+    margin: 0;
+    padding: 0;
+}
+
+.user-content[b-jeozniuvnx] {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-content ul[b-jeozniuvnx] {
+    margin: 5px;
+    background: #84bdff;
+    border-radius: 0.5 rem;
+}
 /* _content/projectA/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */

@@ -1,0 +1,15 @@
+*[b-jeozniuvnx] {
+    margin: 0;
+    padding: 0;
+}
+
+.user-content[b-jeozniuvnx] {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-content ul[b-jeozniuvnx] {
+    margin: 5px;
+    background: #84bdff;
+    border-radius: 0.5 rem;
+}

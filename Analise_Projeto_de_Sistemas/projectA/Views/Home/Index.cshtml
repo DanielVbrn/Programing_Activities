@@ -6,21 +6,18 @@
 }
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a>Criar novo Usuário</a>
+    <div class="user-content">
+        <ul>
+
+            <a class="nav-link text-dark" asp-area="" asp-controller="Alunos" asp-action="Index">Aluno</a>
+        </ul>
+        <ul>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Professores" asp-action="Index">Professor</a>
+
+        </ul>
+
+    </div>
 </p>
 
-<table class="table">
-    <thead>
-        <tr>
-            @Html.DisplayNameFor(model => model.Nome);
-        </tr>
 
-        <tr>
-            @Html.DisplayNameFor(model => model.Login);
-        </tr>
-
-        <tr>
-            @Html.DisplayNameFor(model => model.Password);
-        </tr>
-    </thead>
-</table>

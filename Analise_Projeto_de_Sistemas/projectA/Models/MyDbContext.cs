@@ -11,6 +11,9 @@ namespace projectA.Models
 
         public MyDbContext(DbContextOptions<MyDbContext> options): base(options){}
         public DbSet<Usuario> Usuario{ get; set;}
+        public DbSet<Pessoa> Pessoas{ get; set;}
+        public DbSet<Professor> Professores{ get; set;}
+        public DbSet<Aluno> Alunos{ get; set;}
 
     }
 }

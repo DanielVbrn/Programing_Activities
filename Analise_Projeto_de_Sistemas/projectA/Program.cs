@@ -11,11 +11,6 @@ using projectA.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurar a conexão com o banco de dados SQL Server
-string sqlServerConnection = builder.Configuration.GetConnectionString("ApiDbContext");
-builder.Services.AddDbContext<ApiDbContext>(options =>
-    options.UseSqlServer(sqlServerConnection));
-
 // Configurar a conexão com o banco de dados MySQL
 string mySqlConnection = builder.Configuration.GetConnectionString("MyDbContext");
 builder.Services.AddDbContext<MyDbContext>(options => 
@@ -45,6 +40,5 @@ app.MapControllerRoute(
 
 app.Run();
 
-// Execute o aplicativo na porta 3306
-app.Run();
+
 

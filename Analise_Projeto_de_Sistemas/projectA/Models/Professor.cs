@@ -7,7 +7,7 @@ namespace projectA.Models
 {
     public class Professor: Pessoa
     {   
-        public string siap {get; set;}
+        public string? Siap {get; set;}
         public string? Formacao { get; set;}
         public double Salario { get; set;}
 
