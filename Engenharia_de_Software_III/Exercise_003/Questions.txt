@@ -1,0 +1,129 @@
+1.
+  -Recebe esse nome em homenagem a Barbara Liskov, uma renomada cientista da computação.
+
+2.
+
+
+
+3.
+  Exemplo de classe 
+  class Animal {
+    public void mover()
+  }
+
+  class Cachorro extends Animal {
+    public void mover()
+  }
+
+  class Gato extends Animal {
+    public void mover()
+  }
+
+  class Passaro extends Animal {
+    public void mover()
+    public void voar()
+  }
+  
+
+  Aqui, temos uma situação em que a herança de Animal parece menos apropriada. Nem todas as propriedades e 
+  métodos genéricos de Animal são relevantes para todos os subtipos específicos de animais. Pássaros, por exemplo, 
+  podem ter propriedades e comportamentos que não são compartilhados por todos os animais.
+  
+
+4.
+  Exemplo de classe:
+  class Motor {
+    private String tipo;
+
+    public Motor(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void ligar() {
+        System.out.println("Motor ligado");
+    }
+
+    public void desligar() {
+        System.out.println("Motor desligado");
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+  }
+
+  class Veiculo extends Motor {
+    private String modelo;
+
+    public Veiculo(String tipo, String modelo) {
+        super(tipo);
+        this.modelo = modelo;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+  }
+
+  class VeiculoEletrico extends Veiculo {
+    private int capacidadeBateria;
+
+    public VeiculoEletrico(String modelo, int capacidadeBateria) {
+        super("elétrico", modelo);
+        this.capacidadeBateria = capacidadeBateria;
+    }
+
+    public int getCapacidadeBateria() {
+        return capacidadeBateria;
+    }
+  }
+
+
+  -Um exemplo disso seria uma classe Motor que posssui dois métodos ligar() e desligar(), tem-se também uma classe filha Veiculo que herda de Motor,
+  o problema é que se for criada outra classe, por exemplo, VeiculoEletrico que herda o método ligar da classe Motor, que imprime "Motor ligado". 
+  No entanto, um veículo elétrico não tem um motor no sentido de um motor de combustão interna como a classe Veiculo. 
+  Isso mostra como a herança pode introduzir confusão e comprometer a flexibilidade do design quando se tenta 
+  aplicar uma relação "é um" entre classes.
+
+5.
+  -Exemplo
+  interface Animal {
+      void emitirSom();
+      void mover();
+  }
+
+  class Cachorro implements Animal {
+      @Override
+      public void emitirSom() {
+          System.out.println("Latindo");
+      }
+
+      @Override
+      public void mover() {
+          System.out.println("Caminhando");
+      }
+  }
+
+  class Gato implements Animal {
+      @Override
+      public void emitirSom() {
+          System.out.println("Miando");
+      }
+
+      @Override
+      public void mover() {
+          System.out.println("Caminhando elegantemente");
+      }
+  }
+
+  class Passaro implements Animal {
+      @Override
+      public void emitirSom() {
+          System.out.println("Cantando");
+      }
+
+      @Override
+      public void mover() {
+          System.out.println("Voando");
+      }
+  }
