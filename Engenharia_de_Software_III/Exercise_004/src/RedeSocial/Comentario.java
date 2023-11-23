@@ -2,7 +2,7 @@ package RedeSocial;
 
 
 
-public class Comentario implements {
+public class Comentario implements Publicavel{
     private Postagem postagemOriginal;
     public Comentario(String id, Perfil autor, String conteudo, Postagem
             postagemOriginal) {
