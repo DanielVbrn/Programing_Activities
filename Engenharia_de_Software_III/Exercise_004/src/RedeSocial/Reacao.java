@@ -12,8 +12,9 @@ public class Reacao implements  Publicavel{
 
 
     public void exibir() {
-        System.out.println("Reação [" + tipoReacao + "] de " + postagem.getAutor().getNomeUsuario() + " na postagem " + postagem.getId();
+        System.out.println("Reação [" + tipoReacao + "] de " + postagem.getAutor().getNomeUsuario() + " na postagem " + postagem.getId());
     }
+
 
 
 }

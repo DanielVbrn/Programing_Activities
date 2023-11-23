@@ -1,7 +1,6 @@
 package RedeSocial;
 interface Publicavel {
     void exibir();
-    Perfil getAutor();
 }
 
 public class Postagem implements Publicavel{

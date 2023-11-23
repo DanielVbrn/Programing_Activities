@@ -11,8 +11,8 @@ public class Comentario implements {
     }
 
     public void exibir() {
-        System.out.println("Comentário de " + postagemOriginal.getAutor().getNomeUsuario() + " em
-                resposta a postagem [" + postagemOriginal.getId() + "]: + postagemOriginal.getConteudo();
+        System.out.println("Comentário de " + postagemOriginal.getAutor().getNomeUsuario() + " em resposta a " +
+                "postagem [" + postagemOriginal.getId() + "]: " + postagemOriginal.getConteudo());
     }
 
 
