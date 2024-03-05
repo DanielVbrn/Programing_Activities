@@ -1,0 +1,20 @@
+1. Qual a principal imagem relacionada ao princípio e qual a explicação sobre ela?
+arquivo ./iSP-SOlid_image.jpg
+
+
+2. Por que devemos segregar implementações através do uso de interfaces?
+R - A segregação de implementações de interfaces permite com que ao invés de várias classes utilizarem a mesma interface
+e assinarem um contrato de implementarem todos os métodos da interface, inclusivo os que não irá utilizar, são geradas
+interfaces específicas para desempenharem papéis específicos dentro das classes que a impletarem.
+
+
+3. Podemos dizer que esse princípio é correlato ao Single Responsability Principle pelo fato de que classes e interfaces
+devem ter um único “foco” (SRP) e que as interfaces com métodos não correlatos devem ser segregadas (ISP)?
+
+R - Sim, pois uma classe se utilizará de uma interface especifica para ela que lhe possibilite funcionar espeficamente
+para a responsabilidade que a classe foi designada.
+
+
+4.
+A) Uma classe cliente não deve depender de todos métodos que uma interface utiliza só por implementá-la, o que faz a
+segregação de interfaces ser mais necessário.
