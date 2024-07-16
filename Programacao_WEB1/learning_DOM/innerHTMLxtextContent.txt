@@ -1,0 +1,40 @@
+Diferença: Usar textContent quando precisar alterar somente o texto, já o innerHTML deve 
+ser usado quando além do texto for preciso manipular também as tags.
+
+
+EXEMPLO: 
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de textContent vs innerHTML</title>
+</head>
+<body>
+    <div id="example1">
+        <span>Lápis</span> e <span>Caneta</span>
+    </div>
+    <div id="example2">
+        <span>Lápis</span> e <span>Caneta</span>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
+
+script.js
+document.addEventListener("DOMContentLoaded", () => {
+    const div1 = document.getElementById("example1");
+    const div2 = document.getElementById("example2");
+
+    // Usando textContent
+    console.log(div1.textContent); // Output: "Lápis e Caneta"
+    div1.textContent = "Novo texto: Marcador e Borracha";
+    // O conteúdo do <div id="example1"> agora é "Novo texto: Marcador e Borracha"
+
+    // Usando innerHTML
+    console.log(div2.innerHTML); // Output: "<span>Lápis</span> e <span>Caneta</span>"
+    div2.innerHTML = "<p>Nova <strong>HTML</strong>: Régua e Apontador</p>";
+    // O conteúdo do <div id="example2"> agora é "<p>Nova <strong>HTML</strong>: Régua e Apontador</p>"
+});

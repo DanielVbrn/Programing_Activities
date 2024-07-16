@@ -1,0 +1,17 @@
+
+body {
+    margin: 0;
+    font-family:monospace;
+}
+
+
+.button {
+    background-color: blue;
+}
+
+#table-calculator button{
+    width: 60px;
+    color: blue;
+    font-weight: 900;
+}
+

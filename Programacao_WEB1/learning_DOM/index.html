@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/style.css">
+    <script src="src/script.js"></script>
+    <script src="src/calculator.js"></script>
+    <script src="src/autocontrast.js"></script>
+    <script src="src/alterFontSize.js"></script>
+    <script src="src/alterParagraph.js"></script>
+    <script src="src/changeImage.js"></script>
+    <script src="src/addToList.js"></script>
+</head>
+
+<body>
+    <h1>DOM Events</h1>
+    <button id="btn-show-text" onclick="showText()">Show text</button>
+
+    <div class="paragraphs">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, distinctio. Quod molestias sint impedit
+            vitae, modi qui ducimus quam reprehenderit eveniet rem nemo deserunt consectetur dolore quidem iste corporis
+            ad.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, corporis. Excepturi voluptate cum minima
+            dolorem quibusdam reiciendis et corporis alias. Iste itaque facere officia dolorum similique! Possimus
+            maxime et laborum.</p>
+    </div>
+
+    <div class="container">
+        <h1>Result</h1>
+        <div class="result">
+            <button id="btn-count-paragraphs" onclick="countParagraphs()">Show Quantity</button>
+        </div>
+    </div>
+
+    <div>
+        <h1>Exemplo de uso do DOM</h1>
+        <img id="light" src="assets/luzes.png" alt="">
+        <br>
+        <button id="illuminate" onclick="alterLight()">Alter State</button>
+
+        <p id="paragraph">Click the button below to change the paragraph text:</p>
+        <button id="botao" onclick="alterParagraph()">Click here</button>
+        <button id="clear-button" onclick="clearContentParagraph()">Clear</button>
+    </div>
+
+    <div id="content-style">
+        <div>
+            <h2>Click to change background color</h2>
+            <button id="alter-background" onclick="changeBackgroundColor()">Change color</button>
+    
+            <p id="text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus dolore totam iste et culpa iure
+                voluptatem eaque tempora aspernatur? Saepe officia dolor quos, omnis vitae laudantium repellendus obcaecati
+                possimus. Possimus.
+            </p>
+    
+            <button id="copy-element" onclick="copyContent()">Copy content</button>
+
+        </div>
+
+        <div id="auto-contrast">
+            <h1>Auto Contraste</h1>
+            <button id="btn-auto-contrast" onclick="autoContrastButton()">
+                <img id="contrast-image" src="./assets/contraste2.png" alt="">
+            </button>
+        </div>
+        <div>
+            <h1>Alterar fonte da página</h1>
+            <button id="increase-font-size" onclick="increaseFontSize()">Increase font</button>
+            <button id="decrease-font-size" onclick="decreaseFontSize()">Decrease font</button>
+        </div>
+
+        <div id="Calculator">
+            <h1>Calculadora</h1>
+            <div id="input">
+                <span id="display">0</span>
+            </div>
+            <table id="table-calculator">
+                <tr>
+                    <td><button onclick="appendNumber(1)"><h1>1</h1></button></td>
+                    <td><button onclick="appendNumber(2)"><h1>2</h1></button></td>
+                    <td><button onclick="appendNumber(3)"><h1>3</h1></button></td>
+                    <td><button onclick="setOperator('-')"><h1>-</h1></button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="appendNumber(4)"><h1>4</h1></button></td>
+                    <td><button onclick="appendNumber(5)"><h1>5</h1></button></td>
+                    <td><button onclick="appendNumber(6)"><h1>6</h1></button></td>
+                    <td><button onclick="setOperator('+')"><h1>+</h1></button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="appendNumber(7)"><h1>7</h1></button></td>
+                    <td><button onclick="appendNumber(8)"><h1>8</h1></button></td>
+                    <td><button onclick="appendNumber(9)"><h1>9</h1></button></td>
+                    <td><button onclick="setOperator('*')"><h1>x</h1></button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="clearDisplay()"><h1>C</h1></button></td>
+                    <td><button onclick="appendNumber(0)"><h1>0</h1></button></td>
+                    <td><button onclick="calculateResult()"><h1>=</h1></button></td>
+                    <td><button onclick="setOperator('/')"><h1>/</h1></button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Adicionar Texto a Lista e Select</h1>
+        <input type="text" id="inputText" placeholder="Digite algo...">
+        <button onclick="addToListAndSelect()">Adicionar</button>
+        
+        <h2>Lista</h2>
+        <ul id="unorderedList"></ul>
+        
+        <h2>Select</h2>
+        <select id="dropdownMenu"></select>
+    </div>
+
+
+</body>
+
+</html>
+
