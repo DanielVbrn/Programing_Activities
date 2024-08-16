@@ -1,0 +1,116 @@
+* {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+}
+
+
+
+body {
+    font-size: 1.3em;
+    background-color: #ffffff;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 200px 500px 2fr 600px;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-areas:
+    "header header" 
+    "navbar navbar"
+    "body-content body-content" 
+    "rodape rodape";
+}
+
+#header {
+    grid-area: "header";
+    align-self: center;
+    margin: auto;
+    background-color: rgb(45, 245, 145);
+    padding: 1em;
+    border-radius: 100em;
+    display: flex;
+    text-align: center;
+
+}
+
+#header img{
+    width: 2.3em;
+}
+
+
+#navbar a{
+    align-items: center;
+    
+}
+
+
+#navbar {
+    background-color: #dfdfdf;
+    grid-area: "navbar";
+    text-align: center;
+    font-size: 1.12em;
+    margin: auto;
+    width: 50em;
+    height: 5em;
+    border-radius: 3em;
+}
+
+
+#body-content {
+    grid-area: "body-content";
+    margin: 2em;
+
+}
+
+#body-content #post {
+    background-color: #e1e1e1;
+    width: 30em;
+    height: 20em;
+    border-radius: 5px;
+    border-color: #7d7d7d;
+    box-shadow: -5px -5px rgb(182, 182, 182);
+}
+
+#body-content #engagement-section {
+    padding: 5px;
+    display: flex;
+}
+
+#body-content figure img{
+    width: 30em;
+    height: 16em;
+    border-radius: 5px;
+}
+
+
+.btn-engagement {
+    display: flex;
+    width: 19em;
+    height: 2.7em;
+    color: #000000;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    
+}
+
+
+.btn-engagement img{
+    margin-right: 10px;
+    
+    width: 1.7em;
+}
+
+.btn-engagement p{
+    font-size: 1.4em;
+}
+
+#rodape {
+    grid-area: "rodape";
+}
+
+
+#input-comment {
+    display: none;
+}

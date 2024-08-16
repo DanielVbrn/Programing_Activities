@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page engagement</title>
+</head>
+<body>
+    <h1>Estatísticas</h1>
+    <div class="container">
+        <h1>Calculadora de Engajamento</h1>
+        <h2><a href="home.html">Página inicial</a></h2>
+        <label for="interactions">Número de Interações</label>
+        <input type="number" id="interactions" placeholder="Insira o número de interações">
+        
+        <label for="views">Número de Visualizações</label>
+        <input type="number" id="views" placeholder="Insira o número de visualizações">
+        
+        <button onclick="calculateEngagement()">Calcular Taxa de Engajamento</button>
+        
+        <p id="error-message" class="error-message"></p>
+        
+        <div id="result"></div>
+    </div>
+    
+    <script src="script.js"></script>
+    
+    </body>
+</body>
+</html>

@@ -1,0 +1,13 @@
+.oculto {
+    display: none;
+}
+
+#mensagemErro {
+    color: red;
+    margin-top: 10px;
+}
+
+#mensagemErro2 {
+    color: red;
+    margin-top: 10px;
+}
